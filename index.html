@@ -3,120 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Webpage</title>
+    <title>Team Performance Table</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
     <style>
-        body {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background: #333;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 14px 20px;
-        }
-        nav a:hover {
-            background: #575757;
-        }
-        section {
-            padding: 2rem;
-        }
-        .about, .team-performance {
-            margin: 2rem 0;
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 2rem 0;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
+            margin-top: 20px;
         }
         th, td {
-            padding: 8px;
+            padding: 12px;
             text-align: left;
+            border-bottom: 1px solid #ddd;
         }
         th {
-            background-color: #f4f4f9;
+            background-color: #f5f5f5;
+            font-weight: bold;
         }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem 0;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        .search-container {
+            margin: 20px 0;
+        }
+        #searchInput {
+            padding: 8px;
+            width: 200px;
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Personal Webpage</h1>
-    </header>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#team-performance">Team Performance</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <section id="about" class="about">
-        <h2>About Me</h2>
-        <p>Hi! I'm [Your Name], a [Your Profession/Interest]. I love creating, exploring, and sharing my passions with the world.</p>
-    </section>
-    <section id="team-performance" class="team-performance">
-        <h2>Team Performance</h2>
-        <table>
-            <!-- Table content from team_performance.csv will go here -->
+    <div class="container">
+        <h1>Team Performance Table</h1>
+        
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search teams...">
+        </div>
+        
+        <table id="performanceTable">
             <thead>
-                <tr>
-                    <th>Team</th>
-                    <th>Wins</th>
-                    <th>Losses</th>
-                    <th>Draws</th>
-                </tr>
+                <tr id="headerRow"></tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Team A</td>
-                    <td>10</td>
-                    <td>2</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>Team B</td>
-                    <td>8</td>
-                    <td>4</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>Team C</td>
-                    <td>6</td>
-                    <td>6</td>
-                    <td>3</td>
-                </tr>
-            </tbody>
+            <tbody id="tableBody"></tbody>
         </table>
-    </section>
-    <section id="contact" class="contact">
-        <h2>Contact Me</h2>
-        <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile">https://www.linkedin.com/in/yourprofile</a></p>
-    </section>
-    <footer>
-        <p>&copy; 2024 [Your Name]. All rights reserved.</p>
-    </footer>
+    </div>
+
+    <script>
+        // Load the CSV file
+        d3.csv('team_performance.csv').then(function(data) {
+            // Get column headers
+            const columns = Object.keys(data[0]);
+            
+            // Create table headers
+            const headerRow = document.getElementById('headerRow');
+            columns.forEach(column => {
+                const th = document.createElement('th');
+                th.textContent = column.charAt(0).toUpperCase() + column.slice(1);
+                headerRow.appendChild(th);
+            });
+            
+            // Function to render table rows
+            function renderRows(filteredData) {
+                const tableBody = document.getElementById('tableBody');
+                tableBody.innerHTML = '';
+                
+                filteredData.forEach(row => {
+                    const tr = document.createElement('tr');
+                    columns.forEach(column => {
+                        const td = document.createElement('td');
+                        td.textContent = row[column];
+                        tr.appendChild(td);
+                    });
+                    tableBody.appendChild(tr);
+                });
+            }
+            
+            // Initial render
+            renderRows(data);
+            
+            // Search functionality
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredData = data.filter(row => 
+                    Object.values(row).some(value => 
+                        value.toLowerCase().includes(searchTerm)
+                    )
+                );
+                renderRows(filteredData);
+            });
+        }).catch(function(error) {
+            console.error('Error loading the CSV file:', error);
+            document.getElementById('tableBody').innerHTML = 
+                '<tr><td colspan="100%">Error loading data. Make sure the CSV file is in the correct location.</td></tr>';
+        });
+    </script>
 </body>
 </html>
