@@ -7,35 +7,47 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
     <style>
         .container {
-            max-width: 1200px;
+            max-width: 800px;  /* Reduced from 1200px */
             margin: 0 auto;
             padding: 20px;
             font-family: Arial, sans-serif;
         }
+        .table-container {
+            max-height: 500px;  /* Added max height */
+            overflow-y: auto;   /* Added vertical scroll */
+            border: 1px solid #ddd;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            font-size: 14px;    /* Reduced font size */
         }
         th, td {
-            padding: 12px;
+            padding: 8px;       /* Reduced padding */
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
         th {
             background-color: #f5f5f5;
             font-weight: bold;
+            position: sticky;    /* Make headers stick while scrolling */
+            top: 0;
+            z-index: 1;
         }
         tr:hover {
             background-color: #f9f9f9;
         }
         .search-container {
-            margin: 20px 0;
+            margin: 10px 0;     /* Reduced margin */
         }
         #searchInput {
-            padding: 8px;
+            padding: 6px;       /* Reduced padding */
             width: 200px;
             margin-right: 10px;
+        }
+        h1 {
+            font-size: 24px;    /* Smaller heading */
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -47,12 +59,14 @@
             <input type="text" id="searchInput" placeholder="Search teams...">
         </div>
         
-        <table id="performanceTable">
-            <thead>
-                <tr id="headerRow"></tr>
-            </thead>
-            <tbody id="tableBody"></tbody>
-        </table>
+        <div class="table-container">
+            <table id="performanceTable">
+                <thead>
+                    <tr id="headerRow"></tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
     </div>
 
     <script>
