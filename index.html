@@ -3,120 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Performance Table</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-    <style>
-        .container {
-            max-width: 800px;  /* Reduced from 1200px */
-            margin: 0 auto;
-            padding: 20px;
-            font-family: Arial, sans-serif;
-        }
-        .table-container {
-            max-height: 500px;  /* Added max height */
-            overflow-y: auto;   /* Added vertical scroll */
-            border: 1px solid #ddd;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;    /* Reduced font size */
-        }
-        th, td {
-            padding: 8px;       /* Reduced padding */
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f5f5f5;
-            font-weight: bold;
-            position: sticky;    /* Make headers stick while scrolling */
-            top: 0;
-            z-index: 1;
-        }
-        tr:hover {
-            background-color: #f9f9f9;
-        }
-        .search-container {
-            margin: 10px 0;     /* Reduced margin */
-        }
-        #searchInput {
-            padding: 6px;       /* Reduced padding */
-            width: 200px;
-            margin-right: 10px;
-        }
-        h1 {
-            font-size: 24px;    /* Smaller heading */
-            margin-bottom: 15px;
-        }
-    </style>
+    <title>Time Fetcher</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Team Performance Table</h1>
-        
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search teams...">
-        </div>
-        
-        <div class="table-container">
-            <table id="performanceTable">
-                <thead>
-                    <tr id="headerRow"></tr>
-                </thead>
-                <tbody id="tableBody"></tbody>
-            </table>
-        </div>
-    </div>
+    <h1>Fetch the Current Time</h1>
+    <button id="fetchTime">Get Time</button>
+    <p id="timeResult">Click the button to see the current time.</p>
 
     <script>
-        // Load the CSV file
-        d3.csv('team_performance.csv').then(function(data) {
-            // Get column headers
-            const columns = Object.keys(data[0]);
-            
-            // Create table headers
-            const headerRow = document.getElementById('headerRow');
-            columns.forEach(column => {
-                const th = document.createElement('th');
-                th.textContent = column.charAt(0).toUpperCase() + column.slice(1);
-                headerRow.appendChild(th);
-            });
-            
-            // Function to render table rows
-            function renderRows(filteredData) {
-                const tableBody = document.getElementById('tableBody');
-                tableBody.innerHTML = '';
-                
-                filteredData.forEach(row => {
-                    const tr = document.createElement('tr');
-                    columns.forEach(column => {
-                        const td = document.createElement('td');
-                        td.textContent = row[column];
-                        tr.appendChild(td);
-                    });
-                    tableBody.appendChild(tr);
-                });
+        document.getElementById('fetchTime').addEventListener('click', async () => {
+            const response = await fetch('https://0ntypxmj16.execute-api.us-east-1.amazonaws.com/prod/getTime');
+            if (response.ok) {
+                const data = await response.text();
+                document.getElementById('timeResult').innerText = data;
+            } else {
+                document.getElementById('timeResult').innerText = "Error fetching time.";
             }
-            
-            // Initial render
-            renderRows(data);
-            
-            // Search functionality
-            const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('input', function(e) {
-                const searchTerm = e.target.value.toLowerCase();
-                const filteredData = data.filter(row => 
-                    Object.values(row).some(value => 
-                        value.toLowerCase().includes(searchTerm)
-                    )
-                );
-                renderRows(filteredData);
-            });
-        }).catch(function(error) {
-            console.error('Error loading the CSV file:', error);
-            document.getElementById('tableBody').innerHTML = 
-                '<tr><td colspan="100%">Error loading data. Make sure the CSV file is in the correct location.</td></tr>';
         });
     </script>
 </body>
