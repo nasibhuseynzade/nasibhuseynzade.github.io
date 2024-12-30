@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>League Standings Project</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: #f9f9f9;
+        }
+
+        nav {
+            background: #2c3e50;
+            padding: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        .container {
+            flex: 1;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .standings-container {
+            text-align: center;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+        }
+
+        #fetchStandings {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        #fetchStandings:hover {
+            background: #2980b9;
+        }
+
+        .standings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .standings-table th,
+        .standings-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .standings-table th {
+            position: sticky;
+            top: 0;
+            background: #2c3e50;
+            color: white;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .standings-table td:first-child,
+        .standings-table th:first-child {
+            position: sticky;
+            left: 0;
+            background: inherit;
+            z-index: 2;
+        }
+
+        .standings-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .standings-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        .stats-cell {
+            text-align: center;
+        }
+
+        #lastUpdated {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 10px;
+            text-align: right;
+        }
+
+        .loader {
+            display: none;
+            border: 3px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 3px solid #3498db;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .project-description {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .project-description ul {
+            margin-left: 2rem;
+            margin-top: 1rem;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+            margin-bottom: 1rem;
+        }
+
+        .back-button:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./index.html#about">About</a></li>
+            <li><a href="./index.html#projects">Projects</a></li>
+            <li><a href="./index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <a href="./index.html#projects" class="back-button">← Back to Projects</a>
+        <h1>League Standings</h1>
+        
+        <div class="standings-container">
+            <button id="fetchStandings">Refresh Standings</button>
+            <div class="loader" id="loader"></div>
+            <div id="standingsContainer">
+                <table class="standings-table">
+                    <thead>
+                        <tr>
+                            <th>Team</th>
+                            <th>MP</th>
+                            <th>Pts</th>
+                            <th>GF</th>
+                            <th>GA</th>
+                            <th>W</th>
+                            <th>D</th>
+                            <th>L</th>
+                            <th>Win%</th>
+                            <th>Home</th>
+                            <th>Away</th>
+                            <th>Home GF</th>
+                            <th>Away GF</th>
+                        </tr>
+                    </thead>
+                    <tbody id="standingsBody">
+                        <!-- Data will be inserted here -->
+                    </tbody>
+                </table>
+                <p id="lastUpdated"></p>
+            </div>
+        </div>
+
+        <div class="project-description">
+            <h2>About This Project</h2>
+            <p>This application displays and maintains current league standings. The data is fetched from an API and persisted locally, allowing you to view the standings even when offline. Click the refresh button to get the latest updates.</p>
+            
+            <h3>Technologies Used:</h3>
+            <ul>
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript (ES6+)</li>
+                <li>REST API</li>
+                <li>Local Storage</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 John Doe. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to show loading state
+        function setLoading(isLoading) {
+            const loader = document.getElementById('loader');
+            const button = document.getElementById('fetchStandings');
+            loader.style.display = isLoading ? 'block' : 'none';
+            button.disabled = isLoading;
+        }
+
+        // Function to update timestamp
+        function updateTimestamp() {
+            const now = new Date();
+            document.getElementById('lastUpdated').textContent = 
+                `Last updated: ${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+        }
+
+        // Function to save data to localStorage
+        function saveToLocalStorage(data) {
+            const saveData = {
+                timestamp: new Date().toISOString(),
+                standings: data
+            };
+            localStorage.setItem('footballStandings', JSON.stringify(saveData));
+        }
+
+        // Function to load data from localStorage
+        function loadFromLocalStorage() {
+            const saved = localStorage.getItem('footballStandings');
+            if (saved) {
+                const data = JSON.parse(saved);
+                displayStandings(data.standings);
+                const date = new Date(data.timestamp);
+                document.getElementById('lastUpdated').textContent = 
+                    `Last updated: ${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+            }
+        }
+
+        // Function to parse CSV
+        function parseCSV(csvString) {
+            const lines = csvString.trim().split('\n');
+            const headers = lines[0].split(',').map(h => h.trim());
+            
+            return lines.slice(1).map(line => {
+                const values = line.split(',');
+                return headers.reduce((obj, header, index) => {
+                    obj[header] = values[index].trim();
+                    return obj;
+                }, {});
+            });
+        }
+
+        // Function to display standings
+        function displayStandings(data) {
+            const tbody = document.getElementById('standingsBody');
+            tbody.innerHTML = '';
+
+            // Parse CSV data if it's in string format
+            let rows = typeof data === 'string' ? 
+                parseCSV(data) : 
+                data;
+
+            rows.forEach((row, index) => {
+                const tr = document.createElement('tr');
+                
+                tr.innerHTML = `
+                    <td>${row.team_name}</td>
+                    <td class="stats-cell">${row.total_games}</td>
+                    <td class="stats-cell">${row.points}</td>
+                    <td class="stats-cell">${row.goals_scored}</td>
+                    <td class="stats-cell">${row.goals_conceded}</td>
+                    <td class="stats-cell">${row.wins}</td>
+                    <td class="stats-cell">${row.draws}</td>
+                    <td class="stats-cell">${row.losses}</td>
+                    <td class="stats-cell">${parseFloat(row.win_percentage).toFixed(1)}%</td>
+                    <td class="stats-cell">${row.home_games}</td>
+                    <td class="stats-cell">${row.away_games}</td>
+                    <td class="stats-cell">${row.home_goals_scored}</td>
+                    <td class="stats-cell">${row.away_goals_scored}</td>
+                `;
+                
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Event listener for refresh button
+        document.getElementById('fetchStandings').addEventListener('click', async () => {
+            setLoading(true);
+            try {
+                const response = await fetch('https://0ntypxmj16.execute-api.us-east-1.amazonaws.com/prod/');
+                if (response.ok) {
+                    const data = await response.text(); // Use text() for CSV
+                    displayStandings(data);
+                    saveToLocalStorage(data);
+                    updateTimestamp();
+                } else {
+                    alert('Error fetching standings data.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error fetching standings data.');
+            } finally {
+                setLoading(false);
+            }
+        });
+
+        // Load saved data when page loads
+        document.addEventListener('DOMContentLoaded', loadFromLocalStorage);
+    </script>
+</body>
+</html>
