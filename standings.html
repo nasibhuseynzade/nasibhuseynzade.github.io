@@ -292,9 +292,12 @@
             const headers = lines[0].split(',').map(h => h.trim());
             
             return lines.slice(1).map(line => {
-                const values = line.split(',');
+                // Handle possible quoted values
+                const values = line.match(/(".*?"|[^,]+)(?=\s*,|\s*$)/g)
+                    .map(val => val.replace(/^"(.*)"$/, '$1').trim());
+                
                 return headers.reduce((obj, header, index) => {
-                    obj[header] = values[index].trim();
+                    obj[header] = values[index];
                     return obj;
                 }, {});
             });
@@ -310,23 +313,23 @@
                 parseCSV(data) : 
                 data;
 
-            rows.forEach((row, index) => {
+            rows.forEach((row) => {
                 const tr = document.createElement('tr');
                 
                 tr.innerHTML = `
-                    <td>${row.team_name}</td>
-                    <td class="stats-cell">${row.total_games}</td>
+                    <td>${row.team}</td>
+                    <td class="stats-cell">${row.matches_played}</td>
                     <td class="stats-cell">${row.points}</td>
-                    <td class="stats-cell">${row.goals_scored}</td>
-                    <td class="stats-cell">${row.goals_conceded}</td>
+                    <td class="stats-cell">${row.goals_for}</td>
+                    <td class="stats-cell">${row.goals_against}</td>
                     <td class="stats-cell">${row.wins}</td>
                     <td class="stats-cell">${row.draws}</td>
                     <td class="stats-cell">${row.losses}</td>
                     <td class="stats-cell">${parseFloat(row.win_percentage).toFixed(1)}%</td>
-                    <td class="stats-cell">${row.home_games}</td>
-                    <td class="stats-cell">${row.away_games}</td>
-                    <td class="stats-cell">${row.home_goals_scored}</td>
-                    <td class="stats-cell">${row.away_goals_scored}</td>
+                    <td class="stats-cell">${row.home_matches}</td>
+                    <td class="stats-cell">${row.away_matches}</td>
+                    <td class="stats-cell">${row.home_goals}</td>
+                    <td class="stats-cell">${row.away_goals}</td>
                 `;
                 
                 tbody.appendChild(tr);
@@ -340,10 +343,12 @@
                 const response = await fetch('https://0ntypxmj16.execute-api.us-east-1.amazonaws.com/prod/');
                 if (response.ok) {
                     const data = await response.text(); // Use text() for CSV
+                    console.log('Received data:', data); // Debug log
                     displayStandings(data);
                     saveToLocalStorage(data);
                     updateTimestamp();
                 } else {
+                    console.error('Response not ok:', await response.text());
                     alert('Error fetching standings data.');
                 }
             } catch (error) {
