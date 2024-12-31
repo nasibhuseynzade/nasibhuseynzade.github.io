@@ -107,11 +107,11 @@
             z-index: 1;
         }
 
-        .standings-table td:first-child,
+        
         .standings-table th:first-child {
             position: sticky;
             left: 0;
-            background: inherit;
+            background: #2c3e50;
             z-index: 2;
         }
 
@@ -202,6 +202,7 @@
         
         <div class="standings-container">
             <button id="fetchStandings">Refresh Standings</button>
+            <p id="lastUpdated"></p>
             <div class="loader" id="loader"></div>
             <div id="standingsContainer">
                 <table class="standings-table">
@@ -209,44 +210,54 @@
                         <tr>
                             <th>Team</th>
                             <th>MP</th>
-                            <th>Pts</th>
-                            <th>GF</th>
-                            <th>GA</th>
+                            
+
                             <th>W</th>
                             <th>D</th>
                             <th>L</th>
-                            <th>Win%</th>
-                            <th>Home</th>
-                            <th>Away</th>
-                            <th>Home GF</th>
-                            <th>Away GF</th>
+                            <!--<th>Win%</th>-->
+                            <!--<th>Home</th>
+                            <th>Away</th>-->
+                            <!--<th>Home GF</th>
+                            <th>Away GF</th>-->
+                            <th>GF</th>
+                            <th>GA</th>
+                            <th>Pts</th>
                         </tr>
                     </thead>
                     <tbody id="standingsBody">
                         <!-- Data will be inserted here -->
                     </tbody>
                 </table>
-                <p id="lastUpdated"></p>
+                
             </div>
         </div>
 
-        <div class="project-description">
-            <h2>About This Project</h2>
-            <p>This application displays and maintains current league standings. The data is fetched from an API and persisted locally, allowing you to view the standings even when offline. Click the refresh button to get the latest updates.</p>
-            
-            <h3>Technologies Used:</h3>
-            <ul>
-                <li>HTML5</li>
-                <li>CSS3</li>
-                <li>JavaScript (ES6+)</li>
-                <li>REST API</li>
-                <li>Local Storage</li>
+        <div class="project-description" style="background-color: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; line-height: 1.6;">
+            <h2 style="color: #333; font-size: 2rem; text-align: center; margin-bottom: 15px;">About This Project</h2>
+            <p style="color: #666; font-size: 1.1rem; margin-bottom: 20px; text-align: justify;">
+                This application is providing a dynamic and visually appealing league standings table. Data is fetched in real-time from the <a href="https://football-data.org" target="_blank" style="color: #007BFF; text-decoration: none;">Football-Data.org</a> API, transformed into a structured league standings table, and stored locally for offline access. The refresh button ensures that you’re always viewing the latest updates with just a click.
+            </p>
+        
+            <h3 style="color: #333; font-size: 1.5rem; margin-bottom: 10px;">Key Features</h3>
+            <ul style="color: #555; font-size: 1rem; margin-bottom: 20px; padding-left: 20px;">
+                <li>Fetches real-time data from Football-Data.org API.</li>
+                <li>Transforms raw data into a visually appealing league standings table.</li>
+                <li>Stores standings locally using JavaScript’s Local Storage for offline viewing.</li>
+                <li>Refresh button for instant updates.</li>
+            </ul>
+        
+            <h3 style="color: #333; font-size: 1.5rem; margin-bottom: 10px;">Technologies Used</h3>
+            <ul style="color: #555; font-size: 1rem; padding-left: 20px;">
+                <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript (Local Storage)</li>
+                <li><strong>Backend:</strong> Python: Pandas </li>
+                <li><strong>Cloud:</strong> AWS Lambda, AWS API Gateway</li>
             </ul>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2024 John Doe. All rights reserved.</p>
+        <p>&copy; 2025 Nasib Huseynzade. All rights reserved.</p>
     </footer>
 
     <script>
@@ -318,17 +329,17 @@
                 tr.innerHTML = `
                     <td>${row.team_name}</td>
                     <td class="stats-cell">${row.total_games}</td>
-                    <td class="stats-cell">${row.points}</td>
-                    <td class="stats-cell">${row.goals_scored}</td>
-                    <td class="stats-cell">${row.goals_conceded}</td>
                     <td class="stats-cell">${row.wins}</td>
                     <td class="stats-cell">${row.draws}</td>
                     <td class="stats-cell">${row.losses}</td>
-                    <td class="stats-cell">${parseFloat(row.win_percentage).toFixed(1)}%</td>
-                    <td class="stats-cell">${row.home_games}</td>
-                    <td class="stats-cell">${row.away_games}</td>
-                    <td class="stats-cell">${row.home_goals_scored}</td>
-                    <td class="stats-cell">${row.away_goals_scored}</td>
+                    <!-- <td class="stats-cell">${parseFloat(row.win_percentage).toFixed(1)}%</td> -->
+                    <!-- <td class="stats-cell">${row.home_games}</td>
+                    <td class="stats-cell">${row.away_games}</td> -->
+                    <!-- <td class="stats-cell">${row.home_goals_scored}</td>
+                    <td class="stats-cell">${row.away_goals_scored}</td> -->
+                    <td class="stats-cell">${row.goals_scored}</td>
+                    <td class="stats-cell">${row.goals_conceded}</td>
+                    <td class="stats-cell">${row.points}</td>
                 `;
                 
                 tbody.appendChild(tr);
@@ -344,9 +355,10 @@
                     const jsonData = await response.json(); // Parse as JSON instead of text
                     const csvData = jsonData.body; // Extract the CSV from the body property
                     console.log('CSV data:', csvData); // Debug log
+                    updateTimestamp();
                     displayStandings(csvData);
                     saveToLocalStorage(csvData);
-                    updateTimestamp();
+                    
                 } else {
                     console.error('Response not ok:', await response.text());
                     alert('Error fetching standings data.');
