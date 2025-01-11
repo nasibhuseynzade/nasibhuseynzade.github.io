@@ -30,18 +30,9 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 1rem;
+            margin-bottom: 60px; /* Added space for footer */
         }
 
-        .back-button {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background:  #041E42;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
-            margin-bottom: 1rem;
-        }
         .dashboard-container {
             background: white;
             padding: 1rem;
@@ -67,10 +58,8 @@
     </div>
 
     <div class="container">
-        <a href="./index.html#projects" class="back-button">← Back to Projects</a>
-
         <div class="dashboard-container">
-            <div class='tableauPlaceholder' id='viz1735968411150' style='position: relative'>
+            <div class='tableauPlaceholder' id='viz1736566307249' style='position: relative'>
                 <noscript>
                     <a href='#'>
                         <img alt='Dashboard 1' src='https://public.tableau.com/static/images/fe/fenerbahce/Dashboard1/1_rss.png' style='border: none' />
@@ -101,18 +90,18 @@
     </div>
 
     <script type='text/javascript'>
-        var divElement = document.getElementById('viz1735968411150');
+        var divElement = document.getElementById('viz1736566307249');
         var vizElement = divElement.getElementsByTagName('object')[0];
         
         if (divElement.offsetWidth > 800) {
             vizElement.style.width = '100%';
-            vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+            vizElement.style.height = (divElement.offsetWidth * 0.60) + 'px';
         } else if (divElement.offsetWidth > 500) {
             vizElement.style.width = '100%';
-            vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+            vizElement.style.height = (divElement.offsetWidth * 0.60) + 'px';
         } else {
             vizElement.style.width = '100%';
-            vizElement.style.height = '927px';
+            vizElement.style.height = '1227px';  // Updated height for mobile view
         }
         
         var scriptElement = document.createElement('script');
