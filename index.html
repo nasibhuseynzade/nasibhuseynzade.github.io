@@ -33,16 +33,6 @@
             --text-muted: #808080;
         }
 
-        /* Light theme adjustments */
-        [data-theme="light"] {
-            --primary-bg: #f8f9fa;
-            --secondary-bg: #e9ecef;
-            --card-bg: #dee2e6;
-            --text-primary: #212529;
-            --text-secondary: #495057;
-            --text-muted: #6c757d;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -91,16 +81,16 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(26, 26, 26, 0.95);
+            background: var(--secondary-bg);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(64, 224, 208, 0.2);
+            border-bottom: 1px solid var(--accent-primary);
             z-index: 1000;
             padding: 1rem 0;
             transition: all 0.3s ease;
         }
 
         nav.scrolled {
-            background: rgba(10, 10, 10, 0.98);
+            background: var(--primary-bg);
             padding: 0.5rem 0;
         }
 
@@ -256,7 +246,7 @@
             background: var(--card-bg);
             padding: 1rem;
             border-radius: 10px;
-            border: 1px solid rgba(64, 224, 208, 0.2);
+            border: 1px solid var(--accent-primary);
             z-index: 999;
             transition: all 0.3s ease;
         }
@@ -267,7 +257,7 @@
             font-size: 0.9rem;
         }
 
-        .color-controls input, .color-controls select {
+        .color-controls input {
             width: 100%;
             padding: 0.5rem;
             margin-bottom: 0.5rem;
@@ -659,11 +649,6 @@
             <input type="text" id="accent-hex" value="#40e0d0" placeholder="#40e0d0">
             <input type="color" id="accent-color" value="#40e0d0">
         </div>
-        <label style="font-size: 0.8rem; color: var(--text-secondary);">Theme:</label>
-        <select id="theme-selector">
-            <option value="dark">Dark</option>
-            <option value="light">Light</option>
-        </select>
     </div>
     
     <nav id="navbar">
@@ -839,33 +824,16 @@
         function updateColors() {
             const baseHex = document.getElementById('base-hex').value;
             const accentHex = document.getElementById('accent-hex').value;
-            const theme = document.getElementById('theme-selector').value;
             
             // Update primary colors
             document.documentElement.style.setProperty('--base-color', baseHex);
             document.documentElement.style.setProperty('--accent-color', accentHex);
             document.documentElement.style.setProperty('--accent-primary', accentHex);
             
-            // Generate variations
-            if (theme === 'light') {
-                // Light theme colors
-                document.documentElement.style.setProperty('--primary-bg', lightenColor(baseHex, 90));
-                document.documentElement.style.setProperty('--secondary-bg', lightenColor(baseHex, 85));
-                document.documentElement.style.setProperty('--card-bg', lightenColor(baseHex, 80));
-                document.documentElement.style.setProperty('--text-primary', darkenColor(baseHex, 10));
-                document.documentElement.style.setProperty('--text-secondary', lightenColor(baseHex, 30));
-                document.documentElement.style.setProperty('--text-muted', lightenColor(baseHex, 50));
-                document.documentElement.setAttribute('data-theme', 'light');
-            } else {
-                // Dark theme colors
-                document.documentElement.style.setProperty('--primary-bg', baseHex);
-                document.documentElement.style.setProperty('--secondary-bg', lightenColor(baseHex, 15));
-                document.documentElement.style.setProperty('--card-bg', lightenColor(baseHex, 25));
-                document.documentElement.style.setProperty('--text-primary', '#ffffff');
-                document.documentElement.style.setProperty('--text-secondary', '#b0b0b0');
-                document.documentElement.style.setProperty('--text-muted', '#808080');
-                document.documentElement.removeAttribute('data-theme');
-            }
+            // Generate base color variations
+            document.documentElement.style.setProperty('--primary-bg', baseHex);
+            document.documentElement.style.setProperty('--secondary-bg', lightenColor(baseHex, 15));
+            document.documentElement.style.setProperty('--card-bg', lightenColor(baseHex, 25));
             
             // Generate accent variations
             document.documentElement.style.setProperty('--accent-dark', darkenColor(accentHex, 20));
@@ -887,9 +855,6 @@
                         background: radial-gradient(circle at 20% 50%, ${accentRgba}, 0.1) 0%, transparent 50%),
                                     radial-gradient(circle at 80% 20%, ${accentRgba}, 0.05) 0%, transparent 50%),
                                     radial-gradient(circle at 40% 80%, ${accentRgba}, 0.08) 0%, transparent 50%) !important;
-                    }
-                    nav {
-                        border-bottom: 1px solid ${accentRgba}, 0.2) !important;
                     }
                     .social-link:hover {
                         box-shadow: 0 10px 20px ${accentRgba}, 0.3) !important;
@@ -938,7 +903,6 @@
         document.getElementById('accent-hex').addEventListener('input', updateColors);
         document.getElementById('base-color').addEventListener('input', syncColorInputs);
         document.getElementById('accent-color').addEventListener('input', syncColorInputs);
-        document.getElementById('theme-selector').addEventListener('change', updateColors);
 
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
