@@ -8,22 +8,49 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
+        /* ===== EASY COLOR CHANGE - MODIFY ONLY THESE TWO LINES ===== */
+        :root {
+            --base-color: #0a0a0a; /* Dark/Background base color (original: black #0a0a0a) */
+            --accent-color: #40e0d0; /* Accent color (original: turquoise #40e0d0) */
+        }
+        /* ============================================================ */
+
+        /* Auto-generated color system - DO NOT MODIFY */
+        :root {
+            /* Convert hex to RGB for calculations */
+            --base-r: 10; --base-g: 10; --base-b: 10; /* Default black RGB */
+            --accent-r: 64; --accent-g: 224; --accent-b: 208; /* Default turquoise RGB */
+            
+            /* Background colors - variations of base color */
+            --primary-bg: var(--base-color);
+            --secondary-bg: color-mix(in srgb, var(--base-color) 85%, white 15%);
+            --card-bg: color-mix(in srgb, var(--base-color) 70%, white 30%);
+            
+            /* Accent colors - variations of accent color */
+            --accent-primary: var(--accent-color);
+            --accent-dark: color-mix(in srgb, var(--accent-color) 80%, black 20%);
+            --accent-light: color-mix(in srgb, var(--accent-color) 70%, white 30%);
+            
+            /* Text colors - variations of base color */
+            --text-primary: color-mix(in srgb, var(--base-color) 5%, white 95%);
+            --text-secondary: color-mix(in srgb, var(--base-color) 30%, white 70%);
+            --text-muted: color-mix(in srgb, var(--base-color) 50%, white 50%);
+        }
+
+        /* Light theme adjustments */
+        [data-theme="light"] {
+            --primary-bg: color-mix(in srgb, var(--base-color) 2%, white 98%);
+            --secondary-bg: color-mix(in srgb, var(--base-color) 6%, white 94%);
+            --card-bg: color-mix(in srgb, var(--base-color) 10%, white 90%);
+            --text-primary: color-mix(in srgb, var(--base-color) 95%, white 5%);
+            --text-secondary: color-mix(in srgb, var(--base-color) 70%, white 30%);
+            --text-muted: color-mix(in srgb, var(--base-color) 50%, white 50%);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        :root {
-            --primary-bg: #0a0a0a;
-            --secondary-bg: #1a1a1a;
-            --card-bg: #2a2a2a;
-            --turquoise: #40e0d0;
-            --turquoise-dark: #20b2aa;
-            --turquoise-light: #7fffd4;
-            --text-primary: #ffffff;
-            --text-secondary: #b0b0b0;
-            --text-muted: #808080;
         }
 
         body {
@@ -52,9 +79,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 20% 50%, rgba(64, 224, 208, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(64, 224, 208, 0.05) 0%, transparent 50%),
-                        radial-gradient(circle at 40% 80%, rgba(64, 224, 208, 0.08) 0%, transparent 50%);
+            background: radial-gradient(circle at 20% 50%, color-mix(in srgb, var(--accent-color) 10%, transparent 90%) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, color-mix(in srgb, var(--accent-color) 5%, transparent 95%) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, color-mix(in srgb, var(--accent-color) 8%, transparent 92%) 0%, transparent 50%);
             animation: pulse 4s ease-in-out infinite alternate;
         }
 
@@ -68,16 +95,16 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(26, 26, 26, 0.95);
+            background: color-mix(in srgb, var(--secondary-bg) 95%, transparent 5%);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(64, 224, 208, 0.2);
+            border-bottom: 1px solid color-mix(in srgb, var(--accent-color) 20%, transparent 80%);
             z-index: 1000;
             padding: 1rem 0;
             transition: all 0.3s ease;
         }
 
         nav.scrolled {
-            background: rgba(10, 10, 10, 0.98);
+            background: color-mix(in srgb, var(--primary-bg) 98%, transparent 2%);
             padding: 0.5rem 0;
         }
 
@@ -93,7 +120,7 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--turquoise);
+            color: var(--accent-primary);
             text-decoration: none;
         }
 
@@ -118,12 +145,12 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--turquoise);
+            background: var(--accent-primary);
             transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--turquoise);
+            color: var(--accent-primary);
         }
 
         .nav-links a:hover::after {
@@ -155,7 +182,7 @@
             font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 700;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--text-primary), var(--turquoise));
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -190,28 +217,28 @@
         .social-link {
             width: 50px;
             height: 50px;
-            border: 2px solid var(--turquoise);
+            border: 2px solid var(--accent-primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--turquoise);
+            color: var(--accent-primary);
             text-decoration: none;
             transition: all 0.3s ease;
             background: transparent;
         }
 
         .social-link:hover {
-            background: var(--turquoise);
+            background: var(--accent-primary);
             color: var(--primary-bg);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(64, 224, 208, 0.3);
+            box-shadow: 0 10px 20px color-mix(in srgb, var(--accent-color) 30%, transparent 70%);
         }
 
         .cta-button {
             display: inline-block;
             padding: 1rem 2rem;
-            background: linear-gradient(135deg, var(--turquoise), var(--turquoise-dark));
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-dark));
             color: var(--primary-bg);
             text-decoration: none;
             border-radius: 50px;
@@ -222,7 +249,57 @@
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(64, 224, 208, 0.4);
+            box-shadow: 0 15px 30px color-mix(in srgb, var(--accent-color) 40%, transparent 60%);
+        }
+
+        /* Color Picker Controls */
+        .color-controls {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid color-mix(in srgb, var(--accent-color) 20%, transparent 80%);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        .color-controls h4 {
+            margin-bottom: 0.5rem;
+            color: var(--accent-primary);
+            font-size: 0.9rem;
+        }
+
+        .color-controls input, .color-controls select {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid var(--accent-primary);
+            border-radius: 5px;
+            background: var(--secondary-bg);
+            color: var(--text-primary);
+        }
+
+        .color-input {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 0.5rem;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .color-input input[type="color"] {
+            width: 40px;
+            height: 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .color-input input[type="text"] {
+            font-family: monospace;
+            font-size: 0.9rem;
         }
 
         /* Sections */
@@ -241,7 +318,7 @@
             font-weight: 700;
             text-align: center;
             margin-bottom: 3rem;
-            background: linear-gradient(135deg, var(--text-primary), var(--turquoise));
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -268,28 +345,15 @@
             left: 20px;
             width: 100%;
             height: 100%;
-            border: 3px solid var(--turquoise);
+            border: 3px solid var(--accent-primary);
             border-radius: 20px;
             z-index: -1;
-        }
-
-        .about-image img {
-            width: 300px;
-            height: 400px;
-            border-radius: 20px;
-            filter: grayscale(100%);
-            transition: filter 0.3s ease;
-            object-fit: cover;
-        }
-
-        .about-image:hover img {
-            filter: grayscale(0%);
         }
 
         .about-placeholder {
             width: 300px;
             height: 400px;
-            background: linear-gradient(45deg, var(--turquoise), var(--turquoise-dark));
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-dark));
             border-radius: 20px;
             display: flex;
             align-items: center;
@@ -306,7 +370,7 @@
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 2rem;
-            background: linear-gradient(135deg, var(--text-primary), var(--turquoise));
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -322,7 +386,7 @@
 
         .typewriter-cursor {
             display: inline-block;
-            background-color: var(--turquoise);
+            background-color: var(--accent-primary);
             width: 2px;
             height: 1.2em;
             animation: blink 1s infinite;
@@ -332,50 +396,6 @@
         @keyframes blink {
             0%, 50% { opacity: 1; }
             51%, 100% { opacity: 0; }
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-image {
-            position: relative;
-        }
-
-        .about-image::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 100%;
-            height: 100%;
-            border: 3px solid var(--turquoise);
-            border-radius: 20px;
-            z-index: -1;
-        }
-
-        .about-image img {
-            width: 100%;
-            border-radius: 20px;
-            filter: grayscale(100%);
-            transition: filter 0.3s ease;
-        }
-
-        .about-image:hover img {
-            filter: grayscale(0%);
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            color: #555;
-            line-height: 1.8;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
         }
 
         /* Projects Section */
@@ -391,7 +411,7 @@
             border-radius: 20px;
             overflow: hidden;
             transition: all 0.3s ease;
-            border: 1px solid rgba(64, 224, 208, 0.1);
+            border: 1px solid color-mix(in srgb, var(--accent-color) 10%, transparent 90%);
             position: relative;
         }
 
@@ -402,7 +422,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(64, 224, 208, 0.1), transparent);
+            background: linear-gradient(135deg, color-mix(in srgb, var(--accent-color) 10%, transparent 90%), transparent);
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: 1;
@@ -414,8 +434,8 @@
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(64, 224, 208, 0.2);
-            border-color: var(--turquoise);
+            box-shadow: 0 20px 40px color-mix(in srgb, var(--accent-color) 20%, transparent 80%);
+            border-color: var(--accent-primary);
         }
 
         .project-image {
@@ -426,20 +446,9 @@
             align-items: center;
             justify-content: center;
             font-size: 3rem;
-            color: var(--turquoise);
+            color: var(--accent-primary);
             position: relative;
             overflow: hidden;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.1);
         }
 
         .project-content {
@@ -465,16 +474,16 @@
             display: inline-block;
             padding: 0.8rem 1.5rem;
             background: transparent;
-            color: var(--turquoise);
+            color: var(--accent-primary);
             text-decoration: none;
-            border: 2px solid var(--turquoise);
+            border: 2px solid var(--accent-primary);
             border-radius: 50px;
             font-weight: 500;
             transition: all 0.3s ease;
         }
 
         .project-button:hover {
-            background: var(--turquoise);
+            background: var(--accent-primary);
             color: var(--primary-bg);
         }
 
@@ -500,18 +509,18 @@
             background: var(--card-bg);
             padding: 2rem;
             border-radius: 15px;
-            border: 1px solid rgba(64, 224, 208, 0.2);
+            border: 1px solid color-mix(in srgb, var(--accent-color) 20%, transparent 80%);
             transition: all 0.3s ease;
         }
 
         .contact-item:hover {
-            border-color: var(--turquoise);
+            border-color: var(--accent-primary);
             transform: translateY(-5px);
         }
 
         .contact-item i {
             font-size: 2rem;
-            color: var(--turquoise);
+            color: var(--accent-primary);
             margin-bottom: 1rem;
         }
 
@@ -527,7 +536,7 @@
         }
 
         .contact-item a:hover {
-            color: var(--turquoise);
+            color: var(--accent-primary);
         }
 
         /* Footer */
@@ -535,7 +544,7 @@
             background: var(--primary-bg);
             text-align: center;
             padding: 3rem 2rem;
-            border-top: 1px solid rgba(64, 224, 208, 0.2);
+            border-top: 1px solid color-mix(in srgb, var(--accent-color) 20%, transparent 80%);
             position: relative;
         }
 
@@ -546,7 +555,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(64, 224, 208, 0.05) 0%, transparent 70%);
+            background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--accent-color) 5%, transparent 95%) 0%, transparent 70%);
             z-index: -1;
         }
 
@@ -557,7 +566,7 @@
         }
 
         .footer-accent {
-            color: var(--turquoise);
+            color: var(--accent-primary);
             font-weight: 600;
         }
 
@@ -575,6 +584,13 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .color-controls {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin: 1rem;
+            }
+            
             .nav-container {
                 padding: 0 1rem;
             }
@@ -622,17 +638,37 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--turquoise);
+            background: var(--accent-primary);
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--turquoise-dark);
+            background: var(--accent-dark);
         }
     </style>
 </head>
 <body>
     <div class="animated-bg"></div>
+    
+    <!-- Color Controls -->
+    <div class="color-controls">
+        <h4>Quick Color Change</h4>
+        <label style="font-size: 0.8rem; color: var(--text-secondary);">Base Color:</label>
+        <div class="color-input">
+            <input type="text" id="base-hex" value="#0a0a0a" placeholder="#000000">
+            <input type="color" id="base-color" value="#0a0a0a">
+        </div>
+        <label style="font-size: 0.8rem; color: var(--text-secondary);">Accent Color:</label>
+        <div class="color-input">
+            <input type="text" id="accent-hex" value="#40e0d0" placeholder="#40e0d0">
+            <input type="color" id="accent-color" value="#40e0d0">
+        </div>
+        <label style="font-size: 0.8rem; color: var(--text-secondary);">Theme:</label>
+        <select id="theme-selector">
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+        </select>
+    </div>
     
     <nav id="navbar">
         <div class="nav-container">
@@ -768,6 +804,26 @@
     </footer>
 
     <script>
+        // Color system management
+        function updateColors() {
+            const hue = document.getElementById('hue-slider').value;
+            const theme = document.getElementById('theme-selector').value;
+            
+            // Update CSS custom property
+            document.documentElement.style.setProperty('--accent-hue', hue);
+            
+            // Update theme
+            if (theme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+            }
+        }
+
+        // Event listeners for color controls
+        document.getElementById('hue-slider').addEventListener('input', updateColors);
+        document.getElementById('theme-selector').addEventListener('change', updateColors);
+
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
@@ -777,6 +833,9 @@
                 navbar.classList.remove('scrolled');
             }
         });
+    </script>
+</body>
+</html>
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -828,6 +887,7 @@
 
         // Start typewriter effect when page loads
         window.addEventListener('load', typeWriter);
+        
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -849,6 +909,3 @@
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
         });
-    </script>
-</body>
-</html>
