@@ -17,34 +17,30 @@
 
         /* Auto-generated color system - DO NOT MODIFY */
         :root {
-            /* Convert hex to RGB for calculations */
-            --base-r: 10; --base-g: 10; --base-b: 10; /* Default black RGB */
-            --accent-r: 64; --accent-g: 224; --accent-b: 208; /* Default turquoise RGB */
-            
-            /* Background colors - variations of base color */
+            /* Background colors - lighter versions of base */
             --primary-bg: var(--base-color);
-            --secondary-bg: color-mix(in srgb, var(--base-color) 85%, white 15%);
-            --card-bg: color-mix(in srgb, var(--base-color) 70%, white 30%);
+            --secondary-bg: #1a1a1a;
+            --card-bg: #2a2a2a;
             
             /* Accent colors - variations of accent color */
             --accent-primary: var(--accent-color);
-            --accent-dark: color-mix(in srgb, var(--accent-color) 80%, black 20%);
-            --accent-light: color-mix(in srgb, var(--accent-color) 70%, white 30%);
+            --accent-dark: #20b2aa;
+            --accent-light: #7fffd4;
             
-            /* Text colors - variations of base color */
-            --text-primary: color-mix(in srgb, var(--base-color) 5%, white 95%);
-            --text-secondary: color-mix(in srgb, var(--base-color) 30%, white 70%);
-            --text-muted: color-mix(in srgb, var(--base-color) 50%, white 50%);
+            /* Text colors */
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --text-muted: #808080;
         }
 
         /* Light theme adjustments */
         [data-theme="light"] {
-            --primary-bg: color-mix(in srgb, var(--base-color) 2%, white 98%);
-            --secondary-bg: color-mix(in srgb, var(--base-color) 6%, white 94%);
-            --card-bg: color-mix(in srgb, var(--base-color) 10%, white 90%);
-            --text-primary: color-mix(in srgb, var(--base-color) 95%, white 5%);
-            --text-secondary: color-mix(in srgb, var(--base-color) 70%, white 30%);
-            --text-muted: color-mix(in srgb, var(--base-color) 50%, white 50%);
+            --primary-bg: #f8f9fa;
+            --secondary-bg: #e9ecef;
+            --card-bg: #dee2e6;
+            --text-primary: #212529;
+            --text-secondary: #495057;
+            --text-muted: #6c757d;
         }
 
         * {
@@ -79,9 +75,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 20% 50%, color-mix(in srgb, var(--accent-color) 10%, transparent 90%) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, color-mix(in srgb, var(--accent-color) 5%, transparent 95%) 0%, transparent 50%),
-                        radial-gradient(circle at 40% 80%, color-mix(in srgb, var(--accent-color) 8%, transparent 92%) 0%, transparent 50%);
+            background: radial-gradient(circle at 20% 50%, rgba(64, 224, 208, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(64, 224, 208, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(64, 224, 208, 0.08) 0%, transparent 50%);
             animation: pulse 4s ease-in-out infinite alternate;
         }
 
@@ -95,16 +91,16 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: color-mix(in srgb, var(--secondary-bg) 95%, transparent 5%);
+            background: rgba(26, 26, 26, 0.95);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid color-mix(in srgb, var(--accent-color) 20%, transparent 80%);
+            border-bottom: 1px solid rgba(64, 224, 208, 0.2);
             z-index: 1000;
             padding: 1rem 0;
             transition: all 0.3s ease;
         }
 
         nav.scrolled {
-            background: color-mix(in srgb, var(--primary-bg) 98%, transparent 2%);
+            background: rgba(10, 10, 10, 0.98);
             padding: 0.5rem 0;
         }
 
@@ -232,7 +228,7 @@
             background: var(--accent-primary);
             color: var(--primary-bg);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px color-mix(in srgb, var(--accent-color) 30%, transparent 70%);
+            box-shadow: 0 10px 20px rgba(64, 224, 208, 0.3);
         }
 
         .cta-button {
@@ -249,7 +245,7 @@
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 30px color-mix(in srgb, var(--accent-color) 40%, transparent 60%);
+            box-shadow: 0 15px 30px rgba(64, 224, 208, 0.4);
         }
 
         /* Color Picker Controls */
@@ -260,7 +256,7 @@
             background: var(--card-bg);
             padding: 1rem;
             border-radius: 10px;
-            border: 1px solid color-mix(in srgb, var(--accent-color) 20%, transparent 80%);
+            border: 1px solid rgba(64, 224, 208, 0.2);
             z-index: 999;
             transition: all 0.3s ease;
         }
@@ -411,7 +407,7 @@
             border-radius: 20px;
             overflow: hidden;
             transition: all 0.3s ease;
-            border: 1px solid color-mix(in srgb, var(--accent-color) 10%, transparent 90%);
+            border: 1px solid rgba(64, 224, 208, 0.1);
             position: relative;
         }
 
@@ -422,7 +418,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, color-mix(in srgb, var(--accent-color) 10%, transparent 90%), transparent);
+            background: linear-gradient(135deg, rgba(64, 224, 208, 0.1), transparent);
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: 1;
@@ -434,7 +430,7 @@
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px color-mix(in srgb, var(--accent-color) 20%, transparent 80%);
+            box-shadow: 0 20px 40px rgba(64, 224, 208, 0.2);
             border-color: var(--accent-primary);
         }
 
@@ -509,7 +505,7 @@
             background: var(--card-bg);
             padding: 2rem;
             border-radius: 15px;
-            border: 1px solid color-mix(in srgb, var(--accent-color) 20%, transparent 80%);
+            border: 1px solid rgba(64, 224, 208, 0.2);
             transition: all 0.3s ease;
         }
 
@@ -544,7 +540,7 @@
             background: var(--primary-bg);
             text-align: center;
             padding: 3rem 2rem;
-            border-top: 1px solid color-mix(in srgb, var(--accent-color) 20%, transparent 80%);
+            border-top: 1px solid rgba(64, 224, 208, 0.2);
             position: relative;
         }
 
@@ -555,7 +551,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--accent-color) 5%, transparent 95%) 0%, transparent 70%);
+            background: radial-gradient(circle at 50% 50%, rgba(64, 224, 208, 0.05) 0%, transparent 70%);
             z-index: -1;
         }
 
@@ -804,24 +800,144 @@
     </footer>
 
     <script>
-        // Color system management
+        // Color system management - now using JavaScript to calculate colors
+        function hexToRgb(hex) {
+            const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? {
+                r: parseInt(result[1], 16),
+                g: parseInt(result[2], 16),
+                b: parseInt(result[3], 16)
+            } : null;
+        }
+
+        function rgbToHex(r, g, b) {
+            return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+        }
+
+        function lightenColor(hex, percent) {
+            const rgb = hexToRgb(hex);
+            if (!rgb) return hex;
+            
+            const r = Math.min(255, Math.floor(rgb.r + (255 - rgb.r) * percent / 100));
+            const g = Math.min(255, Math.floor(rgb.g + (255 - rgb.g) * percent / 100));
+            const b = Math.min(255, Math.floor(rgb.b + (255 - rgb.b) * percent / 100));
+            
+            return rgbToHex(r, g, b);
+        }
+
+        function darkenColor(hex, percent) {
+            const rgb = hexToRgb(hex);
+            if (!rgb) return hex;
+            
+            const r = Math.max(0, Math.floor(rgb.r * (100 - percent) / 100));
+            const g = Math.max(0, Math.floor(rgb.g * (100 - percent) / 100));
+            const b = Math.max(0, Math.floor(rgb.b * (100 - percent) / 100));
+            
+            return rgbToHex(r, g, b);
+        }
+
         function updateColors() {
-            const hue = document.getElementById('hue-slider').value;
+            const baseHex = document.getElementById('base-hex').value;
+            const accentHex = document.getElementById('accent-hex').value;
             const theme = document.getElementById('theme-selector').value;
             
-            // Update CSS custom property
-            document.documentElement.style.setProperty('--accent-hue', hue);
+            // Update primary colors
+            document.documentElement.style.setProperty('--base-color', baseHex);
+            document.documentElement.style.setProperty('--accent-color', accentHex);
+            document.documentElement.style.setProperty('--accent-primary', accentHex);
             
-            // Update theme
+            // Generate variations
             if (theme === 'light') {
+                // Light theme colors
+                document.documentElement.style.setProperty('--primary-bg', lightenColor(baseHex, 90));
+                document.documentElement.style.setProperty('--secondary-bg', lightenColor(baseHex, 85));
+                document.documentElement.style.setProperty('--card-bg', lightenColor(baseHex, 80));
+                document.documentElement.style.setProperty('--text-primary', darkenColor(baseHex, 10));
+                document.documentElement.style.setProperty('--text-secondary', lightenColor(baseHex, 30));
+                document.documentElement.style.setProperty('--text-muted', lightenColor(baseHex, 50));
                 document.documentElement.setAttribute('data-theme', 'light');
             } else {
+                // Dark theme colors
+                document.documentElement.style.setProperty('--primary-bg', baseHex);
+                document.documentElement.style.setProperty('--secondary-bg', lightenColor(baseHex, 15));
+                document.documentElement.style.setProperty('--card-bg', lightenColor(baseHex, 25));
+                document.documentElement.style.setProperty('--text-primary', '#ffffff');
+                document.documentElement.style.setProperty('--text-secondary', '#b0b0b0');
+                document.documentElement.style.setProperty('--text-muted', '#808080');
                 document.documentElement.removeAttribute('data-theme');
+            }
+            
+            // Generate accent variations
+            document.documentElement.style.setProperty('--accent-dark', darkenColor(accentHex, 20));
+            document.documentElement.style.setProperty('--accent-light', lightenColor(accentHex, 20));
+            
+            // Update color pickers to match text inputs
+            document.getElementById('base-color').value = baseHex;
+            document.getElementById('accent-color').value = accentHex;
+            
+            // Update rgba values for gradients and shadows
+            const accentRgb = hexToRgb(accentHex);
+            if (accentRgb) {
+                const accentRgba = `rgba(${accentRgb.r}, ${accentRgb.g}, ${accentRgb.b}`;
+                
+                // Update all the rgba references in the CSS
+                const style = document.createElement('style');
+                style.textContent = `
+                    .animated-bg::before {
+                        background: radial-gradient(circle at 20% 50%, ${accentRgba}, 0.1) 0%, transparent 50%),
+                                    radial-gradient(circle at 80% 20%, ${accentRgba}, 0.05) 0%, transparent 50%),
+                                    radial-gradient(circle at 40% 80%, ${accentRgba}, 0.08) 0%, transparent 50%) !important;
+                    }
+                    nav {
+                        border-bottom: 1px solid ${accentRgba}, 0.2) !important;
+                    }
+                    .social-link:hover {
+                        box-shadow: 0 10px 20px ${accentRgba}, 0.3) !important;
+                    }
+                    .cta-button:hover {
+                        box-shadow: 0 15px 30px ${accentRgba}, 0.4) !important;
+                    }
+                    .project-card {
+                        border: 1px solid ${accentRgba}, 0.1) !important;
+                    }
+                    .project-card::before {
+                        background: linear-gradient(135deg, ${accentRgba}, 0.1), transparent) !important;
+                    }
+                    .project-card:hover {
+                        box-shadow: 0 20px 40px ${accentRgba}, 0.2) !important;
+                    }
+                    .contact-item {
+                        border: 1px solid ${accentRgba}, 0.2) !important;
+                    }
+                    footer {
+                        border-top: 1px solid ${accentRgba}, 0.2) !important;
+                    }
+                    footer::before {
+                        background: radial-gradient(circle at 50% 50%, ${accentRgba}, 0.05) 0%, transparent 70%) !important;
+                    }
+                `;
+                
+                // Remove old style if exists
+                const oldStyle = document.getElementById('dynamic-colors');
+                if (oldStyle) oldStyle.remove();
+                
+                style.id = 'dynamic-colors';
+                document.head.appendChild(style);
             }
         }
 
+        function syncColorInputs() {
+            // Sync color picker with text input
+            document.getElementById('base-hex').value = document.getElementById('base-color').value;
+            document.getElementById('accent-hex').value = document.getElementById('accent-color').value;
+            updateColors();
+        }
+
         // Event listeners for color controls
-        document.getElementById('hue-slider').addEventListener('input', updateColors);
+        document.getElementById('base-hex').addEventListener('input', updateColors);
+        document.getElementById('accent-hex').addEventListener('input', updateColors);
+        document.getElementById('base-color').addEventListener('input', syncColorInputs);
+        document.getElementById('accent-color').addEventListener('input', syncColorInputs);
         document.getElementById('theme-selector').addEventListener('change', updateColors);
 
         // Navbar scroll effect
