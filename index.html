@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nasib Huseynzade - Personal Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -26,18 +26,18 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Rajdhani', sans-serif;
             line-height: 1.6;
             color: var(--black);
             background: var(--white);
             overflow-x: hidden;
         }
 
-        /* Modern Navigation */
+        /* Enhanced Navigation */
         nav {
-            background: rgba(10, 10, 10, 0.95);
+            background: rgba(10, 10, 10, 0.98);
             backdrop-filter: blur(20px);
-            padding: 1rem 2rem;
+            padding: 1.2rem 2rem;
             position: fixed;
             width: 100%;
             top: 0;
@@ -101,25 +101,32 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 900;
             color: var(--primary-turquoise);
             text-decoration: none;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 2.5rem;
+            gap: 3rem;
         }
 
         nav a {
-            color: var(--white);
+            color: var(--light-turquoise);
             text-decoration: none;
+            font-family: 'Orbitron', monospace;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 1rem;
             position: relative;
             transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         nav a::after {
@@ -139,14 +146,15 @@
 
         nav a:hover {
             color: var(--primary-turquoise);
+            text-shadow: 0 0 8px rgba(64, 224, 208, 0.6);
         }
 
-        /* Hero Section */
+        /* Enhanced Hero Section */
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('./Images/Wallpaper.jpg');
             background-size: cover;
-            background-position: center +20px;
+            background-position: center +25px;
             background-attachment: fixed;
             display: flex;
             align-items: center;
@@ -175,21 +183,34 @@
         }
 
         .hero-content h1 {
-            font-size: 4rem;
+            font-family: 'Orbitron', monospace;
+            font-size: 3.5rem;
             font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--white) 0%, var(--primary-turquoise) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--primary-turquoise);
+            text-shadow: 0 0 20px rgba(64, 224, 208, 0.6);
+            animation: titlePulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes titlePulse {
+            0% { 
+                text-shadow: 0 0 20px rgba(64, 224, 208, 0.6);
+            }
+            100% { 
+                text-shadow: 0 0 30px rgba(64, 224, 208, 0.9), 0 0 40px rgba(64, 224, 208, 0.5);
+            }
         }
 
         .hero-content .subtitle {
+            font-family: 'Rajdhani', sans-serif;
             font-size: 1.3rem;
-            font-weight: 300;
+            font-weight: 400;
             margin-bottom: 2rem;
-            color: var(--light-turquoise);
-            letter-spacing: 1px;
+            color: var(--white);
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .social-links {
@@ -200,8 +221,8 @@
         }
 
         .social-links a {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             background: rgba(64, 224, 208, 0.1);
             border: 2px solid var(--primary-turquoise);
             border-radius: 50%;
@@ -209,7 +230,7 @@
             align-items: center;
             justify-content: center;
             color: var(--primary-turquoise);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
         }
 
@@ -232,11 +253,14 @@
 
         .section-title {
             text-align: center;
-            font-size: 3rem;
+            font-family: 'Orbitron', monospace;
+            font-size: 3.2rem;
             font-weight: 700;
             margin-bottom: 4rem;
             color: var(--white);
             position: relative;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .section-title::after {
@@ -290,10 +314,37 @@
         }
 
         .about-content p {
+            font-family: 'Orbitron', monospace;
             font-size: 1.1rem;
             line-height: 1.8;
             color: var(--white);
             font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .typewriter-text {
+            opacity: 0;
+            animation: typewriter 0.1s ease-in-out forwards;
+        }
+
+        @keyframes typewriter {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .about-content.animate-text p {
+            font-size: 0;
+        }
+
+        .about-content.animate-text .typewriter-text {
+            font-size: 1.1rem;
+            display: inline;
         }
 
         /* Projects Section */
@@ -379,16 +430,21 @@
         }
 
         .project-content h3 {
-            font-size: 1.3rem;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.4rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: var(--white);
+            color: var(--primary-turquoise);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .project-content p {
+            font-family: 'Rajdhani', sans-serif;
             color: var(--light-turquoise);
             margin-bottom: 1.5rem;
             line-height: 1.6;
+            font-size: 1.1rem;
         }
 
         .btn {
@@ -399,9 +455,11 @@
             text-decoration: none;
             border-radius: 25px;
             transition: all 0.3s ease;
+            font-family: 'Orbitron', monospace;
             font-weight: 600;
             font-size: 0.9rem;
             letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .btn:hover {
@@ -464,12 +522,14 @@
         }
 
         .contact-details p {
-            font-size: 1.2rem;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.3rem;
             margin: 1.5rem 0;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 1rem;
+            font-weight: 500;
         }
 
         .contact-details a {
@@ -494,6 +554,8 @@
             text-align: center;
             padding: 2rem;
             border-top: 1px solid rgba(64, 224, 208, 0.2);
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 400;
         }
 
         /* Animations */
@@ -520,15 +582,16 @@
             }
 
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
+                letter-spacing: 2px;
             }
 
             .hero-content .subtitle {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
 
             .section-title {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
 
             .projects-grid {
@@ -598,8 +661,8 @@
     <section id="about" class="about">
         <div class="container">
             <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <p>I am a Master's student at Stiftung Universität Hildesheim, specializing in Data Analytics, with a profound passion for uncovering data-driven insights. I hold a Bachelor's Degree in Control and Automation Engineering from Istanbul Technical University, where I honed my programming and mathematical background. My academic and professional journey is anchored in cutting-edge advancements in Artificial Intelligence, complemented by expertise in data engineering, automation, and cloud technologies. Driven by innovation and a commitment to excellence, I strive to design and implement scalable data solutions that empower transformative analytics and shape the future of intelligent systems.</p>
+            <div class="about-content" id="aboutContent">
+                <p id="aboutText">I am a Master's student at Stiftung Universität Hildesheim, specializing in Data Analytics, with a profound passion for uncovering data-driven insights. I hold a Bachelor's Degree in Control and Automation Engineering from Istanbul Technical University, where I honed my programming and mathematical background. My academic and professional journey is anchored in cutting-edge advancements in Artificial Intelligence, complemented by expertise in data engineering, automation, and cloud technologies. Driven by innovation and a commitment to excellence, I strive to design and implement scalable data solutions that empower transformative analytics and shape the future of intelligent systems.</p>
             </div>
         </div>
     </section>
@@ -617,7 +680,7 @@
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="./Images/gnn.jpg" alt="Mitigating Over-squashing in GNNs">
+                    <img src="./Images/graphs.png" alt="Mitigating Over-squashing in GNNs">
                     <div class="project-content">
                         <h3>Mitigating Over-squashing in GNNs</h3>
                         <p>Student Research Project on Mitigation of Over-squashing with Rewiring Methods. (Coming Soon)</p>
@@ -658,5 +721,52 @@
     <footer>
         <p>&copy; 2025 Nasib Huseynzade. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Typewriter effect for About section
+        function typeWriter() {
+            const aboutText = document.getElementById('aboutText');
+            const aboutContent = document.getElementById('aboutContent');
+            const text = aboutText.textContent;
+            
+            // Clear the text initially
+            aboutText.innerHTML = '';
+            aboutContent.classList.add('animate-text');
+            
+            // Split text into characters
+            const chars = text.split('');
+            let i = 0;
+            
+            function typeChar() {
+                if (i < chars.length) {
+                    const span = document.createElement('span');
+                    span.textContent = chars[i];
+                    span.className = 'typewriter-text';
+                    span.style.animationDelay = '0s';
+                    aboutText.appendChild(span);
+                    i++;
+                    setTimeout(typeChar, 30); // Adjust speed here (lower = faster)
+                }
+            }
+            
+            typeChar();
+        }
+
+        // Intersection Observer to trigger animation when section is visible
+        const aboutSection = document.getElementById('aboutContent');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    typeWriter();
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, {
+            threshold: 0.3 // Trigger when 30% of the section is visible
+        });
+        
+        observer.observe(aboutSection);
+    </script>
 </body>
 </html>
