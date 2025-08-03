@@ -3,95 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nasib Huseynzade - Data Analytics Portfolio</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <title>Nasib Huseynzade - Personal Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        /* ===== EASY COLOR CHANGE - MODIFY ONLY THESE TWO LINES ===== */
-        :root {
-            --base-color: #0a0a0a; /* Dark/Background base color (original: black #0a0a0a) */
-            --accent-color: #40e0d0; /* Accent color (original: turquoise #40e0d0) */
-        }
-        /* ============================================================ */
-
-        /* Auto-generated color system - DO NOT MODIFY */
-        :root {
-            /* Background colors - lighter versions of base */
-            --primary-bg: var(--base-color);
-            --secondary-bg: #1a1a1a;
-            --card-bg: #2a2a2a;
-            
-            /* Accent colors - variations of accent color */
-            --accent-primary: var(--accent-color);
-            --accent-dark: #20b2aa;
-            --accent-light: #7fffd4;
-            
-            /* Text colors */
-            --text-primary: #ffffff;
-            --text-secondary: #b0b0b0;
-            --text-muted: #808080;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-turquoise: #40E0D0;
+            --dark-turquoise: #20B2AA;
+            --light-turquoise: #AFEEEE;
+            --accent-turquoise: #00CED1;
+            --black: #0A0A0A;
+            --dark-gray: #1A1A1A;
+            --medium-gray: #2A2A2A;
+            --light-gray: #F8F9FA;
+            --white: #FFFFFF;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--primary-bg);
-            color: var(--text-primary);
             line-height: 1.6;
+            color: var(--black);
+            background: var(--white);
             overflow-x: hidden;
         }
 
-        /* Animated background */
-        .animated-bg {
+        /* Modern Navigation */
+        nav {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 2rem;
             position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(45deg, var(--primary-bg), var(--secondary-bg));
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary-turquoise);
+            border-top: 3px solid var(--accent-turquoise);
+            box-shadow: 0 2px 20px rgba(64, 224, 208, 0.1);
         }
 
-        .animated-bg::before {
+        nav::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 50%, rgba(64, 224, 208, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(64, 224, 208, 0.05) 0%, transparent 50%),
-                        radial-gradient(circle at 40% 80%, rgba(64, 224, 208, 0.08) 0%, transparent 50%);
-            animation: pulse 4s ease-in-out infinite alternate;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-turquoise), var(--accent-turquoise), var(--primary-turquoise), transparent);
         }
 
-        @keyframes pulse {
-            0% { opacity: 0.3; }
-            100% { opacity: 0.8; }
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: var(--secondary-bg);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--accent-primary);
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            background: var(--primary-bg);
-            padding: 0.5rem 0;
+        nav::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent-turquoise), var(--primary-turquoise), var(--dark-turquoise));
         }
 
         .nav-container {
@@ -100,318 +73,285 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
+            position: relative;
+        }
+
+        .nav-container::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 60%;
+            background: linear-gradient(180deg, var(--primary-turquoise), var(--accent-turquoise));
+            border-radius: 2px;
+        }
+
+        .nav-container::after {
+            content: '';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 60%;
+            background: linear-gradient(180deg, var(--accent-turquoise), var(--primary-turquoise));
+            border-radius: 2px;
         }
 
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--accent-primary);
+            color: var(--primary-turquoise);
             text-decoration: none;
         }
 
-        .nav-links {
-            display: flex;
+        nav ul {
             list-style: none;
-            gap: 2rem;
+            display: flex;
+            gap: 2.5rem;
         }
 
-        .nav-links a {
-            color: var(--text-secondary);
+        nav a {
+            color: var(--white);
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s ease;
+            font-size: 0.95rem;
             position: relative;
+            transition: all 0.3s ease;
         }
 
-        .nav-links a::after {
+        nav a::after {
             content: '';
             position: absolute;
             bottom: -5px;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--accent-primary);
+            background: var(--primary-turquoise);
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover {
-            color: var(--accent-primary);
+        nav a:hover::after {
+            width: 100%;
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
+        nav a:hover {
+            color: var(--primary-turquoise);
         }
 
         /* Hero Section */
         .hero {
-            min-height: 100vh;
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('./Images/Wallpaper.jpg');
+            background-size: cover;
+            background-position: center +20px;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            color: var(--white);
             position: relative;
-            padding: 8rem 0;
-            background: var(--primary-bg);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 70%, rgba(64, 224, 208, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 30%, rgba(64, 224, 208, 0.1) 0%, transparent 50%);
         }
 
         .hero-content {
-            max-width: 1000px;
-            padding: 0 2rem;
-        }
-
-        .hero-top {
-            margin-bottom: 6rem;
-        }
-
-        .hero-title {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--text-primary), var(--accent-primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            position: relative;
+            z-index: 2;
             animation: fadeInUp 1s ease-out;
         }
 
-        .hero-subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease-out 0.2s both;
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--white) 0%, var(--primary-turquoise) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .hero-description {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: fadeInUp 1s ease-out 0.4s both;
+        .hero-content .subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: var(--light-turquoise);
+            letter-spacing: 1px;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
             gap: 1.5rem;
-            margin-bottom: 3rem;
-            animation: fadeInUp 1s ease-out 0.6s both;
+            margin-top: 2rem;
         }
 
-        .social-link {
+        .social-links a {
             width: 50px;
             height: 50px;
-            border: 2px solid var(--accent-primary);
+            background: rgba(64, 224, 208, 0.1);
+            border: 2px solid var(--primary-turquoise);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--accent-primary);
-            text-decoration: none;
+            color: var(--primary-turquoise);
+            font-size: 1.2rem;
             transition: all 0.3s ease;
-            background: transparent;
         }
 
-        .social-link:hover {
-            background: var(--accent-primary);
-            color: var(--primary-bg);
+        .social-links a:hover {
+            background: var(--primary-turquoise);
+            color: var(--black);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(64, 224, 208, 0.3);
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-dark));
-            color: var(--primary-bg);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            animation: fadeInUp 1s ease-out 0.8s both;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(64, 224, 208, 0.4);
-        }
-
-        /* Color Picker Controls */
-        .color-controls {
-            position: fixed;
-            top: 80px;
-            right: 20px;
-            background: var(--card-bg);
-            padding: 1rem;
-            border-radius: 10px;
-            border: 1px solid var(--accent-primary);
-            z-index: 999;
-            transition: all 0.3s ease;
-        }
-
-        .color-controls h4 {
-            margin-bottom: 0.5rem;
-            color: var(--accent-primary);
-            font-size: 0.9rem;
-        }
-
-        .color-controls input {
-            width: 100%;
-            padding: 0.5rem;
-            margin-bottom: 0.5rem;
-            border: 1px solid var(--accent-primary);
-            border-radius: 5px;
-            background: var(--secondary-bg);
-            color: var(--text-primary);
-        }
-
-        .color-input {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 0.5rem;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .color-input input[type="color"] {
-            width: 40px;
-            height: 30px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .color-input input[type="text"] {
-            font-family: monospace;
-            font-size: 0.9rem;
-        }
-
         /* Sections */
         section {
-            padding: 8rem 0;
+            padding: 6rem 2rem;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
         }
 
         .section-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
             text-align: center;
-            margin-bottom: 3rem;
-            background: linear-gradient(135deg, var(--text-primary), var(--accent-primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* About Section - Integrated */
-        .about-integrated {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
-            align-items: start;
-            margin-top: 4rem;
-        }
-
-        .about-image {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+            color: var(--white);
             position: relative;
-            justify-self: center;
         }
 
-        .about-image::before {
+        .section-title::after {
             content: '';
             position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 100%;
-            height: 100%;
-            border: 3px solid var(--accent-primary);
-            border-radius: 20px;
-            z-index: -1;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-turquoise), var(--accent-turquoise));
+            border-radius: 2px;
         }
 
-        .about-placeholder {
-            width: 300px;
-            height: 400px;
-            background: linear-gradient(45deg, var(--accent-primary), var(--accent-dark));
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: white;
+        /* About Section */
+        .about {
+            background: var(--black);
+            border-top: 2px solid var(--primary-turquoise);
+            border-bottom: 2px solid var(--primary-turquoise);
+            position: relative;
         }
 
-        .about-text-container {
-            text-align: left;
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50px;
+            right: 50px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-turquoise), var(--primary-turquoise), var(--accent-turquoise), transparent);
         }
 
-        .about-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            background: linear-gradient(135deg, var(--text-primary), var(--accent-primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .about::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50px;
+            right: 50px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-turquoise), var(--primary-turquoise), var(--accent-turquoise), transparent);
         }
 
-        .typewriter-text {
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 2rem;
+            border: 1px solid rgba(64, 224, 208, 0.2);
+            border-radius: 15px;
+            background: rgba(64, 224, 208, 0.05);
+        }
+
+        .about-content p {
             font-size: 1.1rem;
-            color: var(--text-secondary);
             line-height: 1.8;
-            font-family: 'Courier New', monospace;
-            min-height: 200px;
-        }
-
-        .typewriter-cursor {
-            display: inline-block;
-            background-color: var(--accent-primary);
-            width: 2px;
-            height: 1.2em;
-            animation: blink 1s infinite;
-            margin-left: 2px;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
+            color: var(--white);
+            font-weight: 400;
         }
 
         /* Projects Section */
+        #projects {
+            background: var(--black);
+            border-top: 2px solid var(--primary-turquoise);
+            border-bottom: 2px solid var(--primary-turquoise);
+            position: relative;
+        }
+
+        #projects::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 30px;
+            right: 30px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-turquoise), var(--accent-turquoise), var(--primary-turquoise), transparent);
+        }
+
+        #projects::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 30px;
+            right: 30px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-turquoise), var(--accent-turquoise), var(--primary-turquoise), transparent);
+        }
+
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
+            gap: 2.5rem;
         }
 
         .project-card {
-            background: var(--card-bg);
+            background: var(--dark-gray);
             border-radius: 20px;
             overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
-            border: 1px solid rgba(64, 224, 208, 0.1);
+            border: 2px solid var(--primary-turquoise);
             position: relative;
         }
 
         .project-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(64, 224, 208, 0.1), transparent);
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary-turquoise), var(--accent-turquoise), var(--primary-turquoise));
+            border-radius: 22px;
+            z-index: -1;
             opacity: 0;
             transition: opacity 0.3s ease;
-            z-index: 1;
         }
 
         .project-card:hover::before {
@@ -420,140 +360,140 @@
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(64, 224, 208, 0.2);
-            border-color: var(--accent-primary);
+            box-shadow: 0 20px 40px rgba(64, 224, 208, 0.3);
         }
 
-        .project-image {
+        .project-card img {
             width: 100%;
             height: 250px;
-            background: linear-gradient(45deg, var(--secondary-bg), var(--card-bg));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--accent-primary);
-            position: relative;
-            overflow: hidden;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
         }
 
         .project-content {
             padding: 2rem;
-            position: relative;
-            z-index: 2;
         }
 
-        .project-title {
-            font-size: 1.5rem;
+        .project-content h3 {
+            font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: var(--text-primary);
+            color: var(--white);
         }
 
-        .project-description {
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
+        .project-content p {
+            color: var(--light-turquoise);
+            margin-bottom: 1.5rem;
             line-height: 1.6;
         }
 
-        .project-button {
+        .btn {
             display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background: transparent;
-            color: var(--accent-primary);
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--primary-turquoise), var(--accent-turquoise));
+            color: var(--black);
             text-decoration: none;
-            border: 2px solid var(--accent-primary);
-            border-radius: 50px;
-            font-weight: 500;
+            border-radius: 25px;
             transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
         }
 
-        .project-button:hover {
-            background: var(--accent-primary);
-            color: var(--primary-bg);
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(64, 224, 208, 0.3);
+            background: linear-gradient(135deg, var(--accent-turquoise), var(--dark-turquoise));
         }
 
         /* Contact Section */
         .contact {
-            background: var(--secondary-bg);
-        }
-
-        .contact-content {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .contact-item {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(64, 224, 208, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            border-color: var(--accent-primary);
-            transform: translateY(-5px);
-        }
-
-        .contact-item i {
-            font-size: 2rem;
-            color: var(--accent-primary);
-            margin-bottom: 1rem;
-        }
-
-        .contact-item h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-item a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-item a:hover {
-            color: var(--accent-primary);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary-bg);
-            text-align: center;
-            padding: 3rem 2rem;
-            border-top: 1px solid rgba(64, 224, 208, 0.2);
+            background: var(--black);
+            color: var(--white);
+            border-top: 2px solid var(--primary-turquoise);
             position: relative;
         }
 
-        footer::before {
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20px;
+            right: 20px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-turquoise), var(--primary-turquoise), var(--accent-turquoise), transparent);
+        }
+
+        .contact .section-title {
+            color: var(--white);
+        }
+
+        .contact-details {
+            background: var(--dark-gray);
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 2px solid var(--primary-turquoise);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-details::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(64, 224, 208, 0.05) 0%, transparent 70%);
-            z-index: -1;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-turquoise), var(--primary-turquoise), var(--accent-turquoise));
         }
 
-        footer p {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
+        .contact-details::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-turquoise), var(--primary-turquoise), var(--accent-turquoise));
         }
 
-        .footer-accent {
-            color: var(--accent-primary);
-            font-weight: 600;
+        .contact-details p {
+            font-size: 1.2rem;
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .contact-details a {
+            color: var(--primary-turquoise);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: var(--light-turquoise);
+        }
+
+        .contact-details i {
+            font-size: 1.5rem;
+            color: var(--primary-turquoise);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-gray);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(64, 224, 208, 0.2);
         }
 
         /* Animations */
@@ -570,46 +510,42 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .color-controls {
-                position: relative;
-                top: 0;
-                right: 0;
-                margin: 1rem;
-            }
-            
             .nav-container {
-                padding: 0 1rem;
-            }
-            
-            .nav-links {
+                flex-direction: column;
                 gap: 1rem;
             }
-            
-            .about-integrated {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                text-align: center;
+
+            nav ul {
+                gap: 1.5rem;
             }
-            
-            .about-placeholder {
-                width: 250px;
-                height: 300px;
+
+            .hero-content h1 {
+                font-size: 2.5rem;
             }
-            
+
+            .hero-content .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
             .projects-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .hero-content {
-                padding: 0 1rem;
+
+            .contact-details {
+                padding: 2rem;
             }
-            
-            section {
-                padding: 4rem 0;
+
+            .contact-details p {
+                flex-direction: column;
+                gap: 0.5rem;
             }
         }
 
-        /* Smooth scrolling */
+        /* Scroll behavior */
         html {
             scroll-behavior: smooth;
         }
@@ -620,41 +556,24 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: var(--primary-bg);
+            background: var(--light-gray);
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--accent-primary);
+            background: var(--primary-turquoise);
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent-dark);
+            background: var(--dark-turquoise);
         }
     </style>
 </head>
 <body>
-    <div class="animated-bg"></div>
-    
-    <!-- Color Controls -->
-    <div class="color-controls">
-        <h4>Quick Color Change</h4>
-        <label style="font-size: 0.8rem; color: var(--text-secondary);">Base Color:</label>
-        <div class="color-input">
-            <input type="text" id="base-hex" value="#0a0a0a" placeholder="#000000">
-            <input type="color" id="base-color" value="#0a0a0a">
-        </div>
-        <label style="font-size: 0.8rem; color: var(--text-secondary);">Accent Color:</label>
-        <div class="color-input">
-            <input type="text" id="accent-hex" value="#40e0d0" placeholder="#40e0d0">
-            <input type="color" id="accent-color" value="#40e0d0">
-        </div>
-    </div>
-    
-    <nav id="navbar">
+    <nav>
         <div class="nav-container">
             <a href="#home" class="logo">NH</a>
-            <ul class="nav-links">
+            <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
@@ -665,40 +584,22 @@
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <div class="hero-top">
-                <h1 class="hero-title">Nasib Huseynzade</h1>
-                <p class="hero-subtitle">M.Sc. Data Analytics Student</p>
-                <p class="hero-description">
-                    Passionate about uncovering data-driven insights and designing intelligent systems 
-                    that shape the future of analytics and artificial intelligence.
-                </p>
-                <div class="social-links">
-                    <a href="https://github.com/nasibhuseynzade" class="social-link" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://linkedin.com/in/nasibhuseynzade" class="social-link" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://twitter.com/nasibhuseynzade" class="social-link" target="_blank">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </div>
-                <a href="#projects" class="cta-button">View My Work</a>
-            </div>
+            <h1>Nasib Huseynzade</h1>
+            <p class="subtitle">M.Sc. Data Analytics Student</p>
             
-            <!-- Integrated About Section -->
-            <div class="about-integrated">
-                <div class="about-image">
-                    <div class="about-placeholder">
-                        <i class="fas fa-user"></i>
-                    </div>
-                </div>
-                <div class="about-text-container">
-                    <h2 class="about-title">About Me</h2>
-                    <div class="typewriter-text" id="typewriter">
-                        <span class="typewriter-cursor"></span>
-                    </div>
-                </div>
+            <div class="social-links">
+                <a href="https://github.com/nasibhuseynzade" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/nasibhuseynzade" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://twitter.com/nasibhuseynzade" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>I am a Master's student at Stiftung Universität Hildesheim, specializing in Data Analytics, with a profound passion for uncovering data-driven insights. I hold a Bachelor's Degree in Control and Automation Engineering from Istanbul Technical University, where I honed my programming and mathematical background. My academic and professional journey is anchored in cutting-edge advancements in Artificial Intelligence, complemented by expertise in data engineering, automation, and cloud technologies. Driven by innovation and a commitment to excellence, I strive to design and implement scalable data solutions that empower transformative analytics and shape the future of intelligent systems.</p>
             </div>
         </div>
     </section>
@@ -708,44 +609,27 @@
             <h2 class="section-title">My Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
+                    <img src='./Images/pl.png' alt="PL Statistics Project">
                     <div class="project-content">
-                        <h3 class="project-title">PL Statistics Project</h3>
-                        <p class="project-description">
-                            A web application that fetches Premier League match scores from an API and 
-                            transforms it into a comprehensive standings table with real-time updates.
-                        </p>
-                        <a href="Premier-League" class="project-button">View Project</a>
+                        <h3>PL Statistics Project</h3>
+                        <p>A web application that fetches Premier League match scores from an API and turns it into the standing table</p>
+                        <a href="Premier-League" class="btn">View Project</a>
                     </div>
                 </div>
-                
                 <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-project-diagram"></i>
-                    </div>
+                    <img src="./Images/gnn.jpg" alt="Mitigating Over-squashing in GNNs">
                     <div class="project-content">
-                        <h3 class="project-title">Mitigating Over-squashing in GNNs</h3>
-                        <p class="project-description">
-                            Student Research Project on Mitigation of Over-squashing with Rewiring Methods. 
-                            Exploring advanced techniques in Graph Neural Networks.
-                        </p>
-                        <a href="#" class="project-button">Coming Soon</a>
+                        <h3>Mitigating Over-squashing in GNNs</h3>
+                        <p>Student Research Project on Mitigation of Over-squashing with Rewiring Methods. (Coming Soon)</p>
+                        <a href="#" class="btn">View Project</a>
                     </div>
                 </div>
-                
                 <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
+                    <img src="./Images/tableauu.png" alt="Tableau Project">
                     <div class="project-content">
-                        <h3 class="project-title">Tableau Dashboard</h3>
-                        <p class="project-description">
-                            Comprehensive Fenerbahce Statistics Dashboard on Tableau, featuring interactive 
-                            visualizations and performance analytics.
-                        </p>
-                        <a href="Fenerbahce" class="project-button">View Dashboard</a>
+                        <h3>Tableau Project</h3>
+                        <p>Fenerbahce Statistics Dashboard on Tableau. (Updating soon)</p>
+                        <a href="Fenerbahce" class="btn">View Project</a>
                     </div>
                 </div>
             </div>
@@ -754,238 +638,25 @@
 
     <section id="contact" class="contact">
         <div class="container">
-            <div class="contact-content">
-                <h2 class="section-title">Get In Touch</h2>
-                <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem;">
-                    Ready to collaborate or discuss exciting opportunities? Let's connect!
+            <h2 class="section-title">Contact</h2>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 3rem; color: var(--light-turquoise);">Feel free to reach out to me!</p>
+            <div class="contact-details">
+                <p>
+                    <i class="fas fa-envelope"></i>
+                    <strong>Email:</strong> 
+                    <a href="mailto:nasib.huseynzade@gmail.com">nasib.huseynzade@gmail.com</a>
                 </p>
-                
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <h3>Email</h3>
-                        <a href="mailto:nasib.huseynzade@gmail.com">nasib.huseynzade@gmail.com</a>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <h3>Phone</h3>
-                        <a href="tel:+4915216291471">+49-1521-6291471</a>
-                    </div>
-                </div>
+                <p>
+                    <i class="fas fa-phone"></i>
+                    <strong>Phone:</strong> 
+                    <a href="tel:+4915216291471">+49-1521-6291471</a>
+                </p>
             </div>
         </div>
     </section>
-
+    
     <footer>
-        <p>&copy; 2025 <span class="footer-accent">Nasib Huseynzade</span>. Crafted with passion for data and innovation.</p>
-        <p style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--text-muted);">
-            Designing the future, one algorithm at a time.
-        </p>
+        <p>&copy; 2025 Nasib Huseynzade. All rights reserved.</p>
     </footer>
-
-    <script>
-        // Color system management - now using JavaScript to calculate colors
-        function hexToRgb(hex) {
-            const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-            return result ? {
-                r: parseInt(result[1], 16),
-                g: parseInt(result[2], 16),
-                b: parseInt(result[3], 16)
-            } : null;
-        }
-
-        function rgbToHex(r, g, b) {
-            return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-        }
-
-        function lightenColor(hex, percent) {
-            const rgb = hexToRgb(hex);
-            if (!rgb) return hex;
-            
-            const r = Math.min(255, Math.floor(rgb.r + (255 - rgb.r) * percent / 100));
-            const g = Math.min(255, Math.floor(rgb.g + (255 - rgb.g) * percent / 100));
-            const b = Math.min(255, Math.floor(rgb.b + (255 - rgb.b) * percent / 100));
-            
-            return rgbToHex(r, g, b);
-        }
-
-        function darkenColor(hex, percent) {
-            const rgb = hexToRgb(hex);
-            if (!rgb) return hex;
-            
-            const r = Math.max(0, Math.floor(rgb.r * (100 - percent) / 100));
-            const g = Math.max(0, Math.floor(rgb.g * (100 - percent) / 100));
-            const b = Math.max(0, Math.floor(rgb.b * (100 - percent) / 100));
-            
-            return rgbToHex(r, g, b);
-        }
-
-        function updateColors() {
-            const baseHex = document.getElementById('base-hex').value;
-            const accentHex = document.getElementById('accent-hex').value;
-            
-            // Update primary colors
-            document.documentElement.style.setProperty('--base-color', baseHex);
-            document.documentElement.style.setProperty('--accent-color', accentHex);
-            document.documentElement.style.setProperty('--accent-primary', accentHex);
-            
-            // Generate base color variations
-            document.documentElement.style.setProperty('--primary-bg', baseHex);
-            document.documentElement.style.setProperty('--secondary-bg', lightenColor(baseHex, 15));
-            document.documentElement.style.setProperty('--card-bg', lightenColor(baseHex, 25));
-            
-            // Generate accent variations
-            document.documentElement.style.setProperty('--accent-dark', darkenColor(accentHex, 20));
-            document.documentElement.style.setProperty('--accent-light', lightenColor(accentHex, 20));
-            
-            // Update color pickers to match text inputs
-            document.getElementById('base-color').value = baseHex;
-            document.getElementById('accent-color').value = accentHex;
-            
-            // Update rgba values for gradients and shadows
-            const accentRgb = hexToRgb(accentHex);
-            if (accentRgb) {
-                const accentRgba = `rgba(${accentRgb.r}, ${accentRgb.g}, ${accentRgb.b}`;
-                
-                // Update all the rgba references in the CSS
-                const style = document.createElement('style');
-                style.textContent = `
-                    .animated-bg::before {
-                        background: radial-gradient(circle at 20% 50%, ${accentRgba}, 0.1) 0%, transparent 50%),
-                                    radial-gradient(circle at 80% 20%, ${accentRgba}, 0.05) 0%, transparent 50%),
-                                    radial-gradient(circle at 40% 80%, ${accentRgba}, 0.08) 0%, transparent 50%) !important;
-                    }
-                    .social-link:hover {
-                        box-shadow: 0 10px 20px ${accentRgba}, 0.3) !important;
-                    }
-                    .cta-button:hover {
-                        box-shadow: 0 15px 30px ${accentRgba}, 0.4) !important;
-                    }
-                    .project-card {
-                        border: 1px solid ${accentRgba}, 0.1) !important;
-                    }
-                    .project-card::before {
-                        background: linear-gradient(135deg, ${accentRgba}, 0.1), transparent) !important;
-                    }
-                    .project-card:hover {
-                        box-shadow: 0 20px 40px ${accentRgba}, 0.2) !important;
-                    }
-                    .contact-item {
-                        border: 1px solid ${accentRgba}, 0.2) !important;
-                    }
-                    footer {
-                        border-top: 1px solid ${accentRgba}, 0.2) !important;
-                    }
-                    footer::before {
-                        background: radial-gradient(circle at 50% 50%, ${accentRgba}, 0.05) 0%, transparent 70%) !important;
-                    }
-                `;
-                
-                // Remove old style if exists
-                const oldStyle = document.getElementById('dynamic-colors');
-                if (oldStyle) oldStyle.remove();
-                
-                style.id = 'dynamic-colors';
-                document.head.appendChild(style);
-            }
-        }
-
-        function syncColorInputs() {
-            // Sync color picker with text input
-            document.getElementById('base-hex').value = document.getElementById('base-color').value;
-            document.getElementById('accent-hex').value = document.getElementById('accent-color').value;
-            updateColors();
-        }
-
-        // Event listeners for color controls
-        document.getElementById('base-hex').addEventListener('input', updateColors);
-        document.getElementById('accent-hex').addEventListener('input', updateColors);
-        document.getElementById('base-color').addEventListener('input', syncColorInputs);
-        document.getElementById('accent-color').addEventListener('input', syncColorInputs);
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-    </script>
 </body>
 </html>
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Typewriter effect
-        const typewriterText = [
-            "I am a Master's student at Stiftung Universität Hildesheim, specializing in Data Analytics, with a profound passion for uncovering data-driven insights.\n\n",
-            "I hold a Bachelor's Degree in Control and Automation Engineering from Istanbul Technical University, where I honed my programming and mathematical background.\n\n",
-            "My academic and professional journey is anchored in cutting-edge advancements in Artificial Intelligence, complemented by expertise in data engineering, automation, and cloud technologies.\n\n",
-            "Driven by innovation and a commitment to excellence, I strive to design and implement scalable data solutions that empower transformative analytics and shape the future of intelligent systems."
-        ];
-
-        function typeWriter() {
-            const container = document.getElementById('typewriter');
-            const cursor = container.querySelector('.typewriter-cursor');
-            let textIndex = 0;
-            let charIndex = 0;
-            let currentText = '';
-            
-            function type() {
-                if (textIndex < typewriterText.length) {
-                    if (charIndex < typewriterText[textIndex].length) {
-                        currentText += typewriterText[textIndex].charAt(charIndex);
-                        container.innerHTML = currentText.replace(/\n/g, '<br>') + '<span class="typewriter-cursor"></span>';
-                        charIndex++;
-                        setTimeout(type, 30); // Typing speed
-                    } else {
-                        textIndex++;
-                        charIndex = 0;
-                        setTimeout(type, 500); // Pause between paragraphs
-                    }
-                }
-            }
-            
-            // Start typing after a delay
-            setTimeout(type, 2000);
-        }
-
-        // Start typewriter effect when page loads
-        window.addEventListener('load', typeWriter);
-        
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animation
-        document.querySelectorAll('.project-card, .contact-item, .about-content').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
