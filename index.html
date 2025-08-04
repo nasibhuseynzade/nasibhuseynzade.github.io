@@ -76,39 +76,46 @@
             position: relative;
         }
 
-        .nav-container::before {
-            content: '';
-            position: absolute;
-            left: -20px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 60%;
-            background: linear-gradient(180deg, var(--primary-turquoise), var(--accent-turquoise));
-            border-radius: 2px;
-        }
-
-        .nav-container::after {
-            content: '';
-            position: absolute;
-            right: -20px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 60%;
-            background: linear-gradient(180deg, var(--accent-turquoise), var(--primary-turquoise));
-            border-radius: 2px;
-        }
-
+        /* Animated Logo Styles */
         .logo {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--primary-turquoise);
+            position: relative;
+            width: 50px;
+            height: 50px;
             text-decoration: none;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
+            display: block;
+        }
+
+        .logo-frame {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 170%;
+            height: 170%;
+            object-fit: contain;
+            animation: spin 12s linear infinite;
+            transform-origin: 50% 50%;
+            z-index: 1;
+        }
+
+        .logo-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 96%;
+            height: 96%;
+            object-fit: contain;
+            z-index: 2;
+        }
+
+        .logo:hover .logo-frame {
+            animation-play-state: paused;
+        }
+
+        @keyframes spin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
         nav ul {
@@ -117,7 +124,7 @@
             gap: 3rem;
         }
 
-        nav a {
+        nav a:not(.logo) {
             color: var(--light-turquoise);
             text-decoration: none;
             font-family: 'Orbitron', monospace;
@@ -129,7 +136,7 @@
             letter-spacing: 1px;
         }
 
-        nav a::after {
+        nav a:not(.logo)::after {
             content: '';
             position: absolute;
             bottom: -5px;
@@ -140,11 +147,11 @@
             transition: width 0.3s ease;
         }
 
-        nav a:hover::after {
+        nav a:not(.logo):hover::after {
             width: 100%;
         }
 
-        nav a:hover {
+        nav a:not(.logo):hover {
             color: var(--primary-turquoise);
             text-shadow: 0 0 8px rgba(64, 224, 208, 0.6);
         }
@@ -581,6 +588,11 @@
                 gap: 1.5rem;
             }
 
+            .logo {
+                width: 40px;
+                height: 40px;
+            }
+
             .hero-content h1 {
                 font-size: 2.8rem;
                 letter-spacing: 2px;
@@ -635,7 +647,10 @@
 <body>
     <nav>
         <div class="nav-container">
-            <a href="#home" class="logo">NH</a>
+            <a href="#home" class="logo">
+                <img src="Images/heptagon.png" class="logo-frame" alt="NH frame">
+                <img src="Images/letters.jpg" class="logo-core" alt="NH letters">
+            </a>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
