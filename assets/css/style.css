@@ -150,7 +150,7 @@ nav a:not(.logo):hover {
 /* Enhanced Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('../images/wallpaper.jpg');
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('../Images/wallpaper.jpg');
     background-size: cover;
     background-position: center +25px;
     background-attachment: fixed;
