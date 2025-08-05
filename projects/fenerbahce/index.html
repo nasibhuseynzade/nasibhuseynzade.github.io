@@ -14,7 +14,14 @@
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            background-color: #f0f0f0;
+            
+        }
+        
+        html, body {
+            background: linear-gradient(to top, #40e0d0, #000000) !important;
+            color: var(--light-turquoise);
+            margin: 0;
+            padding: 0;
         }
 
         .header {
@@ -27,23 +34,32 @@
         }
 
         .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 1rem;
-            margin-bottom: 60px; /* Added space for footer */
+            flex: 1;
+            max-width: 1200px;
+            margin: 130px ;
+            padding: 2rem;
+            background:linear-gradient(to top, #40e0d0, #000000);
+
         }
+
         .back-button {
             display: inline-block;
             padding: 0.8rem 1.5rem;
-            background:  #041E42;
-            color: white;
+            background: rgba(64, 224, 208, 0.9) !important; /* More opaque */
+            color: #000000 !important; /* Black text for better contrast */
             text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
-            margin-bottom: 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            margin: 80px 0 2rem 0; /* Add top margin to clear the fixed nav */
+            font-weight: bold;
+            border: 2px solid #40e0d0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 100;
         }
+
         .dashboard-container {
-            background: white;
+            background: rgba(64, 224, 208, 0.6);
             padding: 1rem;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -53,22 +69,34 @@
         .footer {
             text-align: center;
             padding: 1rem;
-            background-color: #041E42;
+            background-color: rgba(64, 224, 208, 0.6);
             color: #FFE000;
             position: fixed;
             bottom: 0;
             width: 100%;
         }
     </style>
+    <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
-    <div class="header">
-        <h1>Fenerbahce Statistics Dashboard</h1>
-    </div>
+    <nav>
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">
+                <img src="../../assets/images/heptagon.png" class="logo-frame" alt="NH frame">
+                <img src="../../assets/images/letters.jpg" class="logo-core" alt="NH letters">
+            </a>
+            <ul>
+                <li><a href="../../index.html#home">Home</a></li>
+                <li><a href="../../index.html#about">About</a></li>
+                <li><a href="../../index.html#projects">Projects</a></li>
+                <li><a href="../../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <div class="container">
-        <a href="/#projects" class="back-button">← Back to Projects</a>
-        <p style="color: #000000; font-size: 1.1rem; margin-bottom: 20px; text-align: justify;">
+        <a href="../../index.html#projects" class="back-button">← Back to Projects</a>
+        <p style="color: #ffffff; font-size: 1.1rem; margin-bottom: 20px; text-align: justify;">
             The source code for this project is available on GitHub at the following link: <a href="https://github.com/nasibhuseynzade/football-stats-pipeline" target="_blank" style="color: #3498db; text-decoration: none;">Fenerbahce Statistics</a>.
         </p>
         <div class="dashboard-container">
@@ -98,9 +126,9 @@
         </div>
     </div>
 
-    <div class="footer">
+    <footer>
         <p>&copy; 2025 Nasib Huseynzade. All rights reserved.</p>
-    </div>
+    </footer>
 
     <script type='text/javascript'>
         var divElement = document.getElementById('viz1736566307249');

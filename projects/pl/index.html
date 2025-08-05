@@ -13,11 +13,18 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        html, body {
+            background: linear-gradient(to top, #40e0d0, #000000) !important;
+            color: var(--light-turquoise);
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            background: #f9f9f9;
+            background: #ffffff;
         }
 
         nav {
@@ -33,6 +40,7 @@
             list-style: none;
             display: flex;
             justify-content: center;
+            
             gap: 2rem;
         }
 
@@ -46,15 +54,15 @@
         nav a:hover {
             color: #3498db;
         }
+      
 
         .container {
             flex: 1;
             max-width: 1200px;
-            margin: 2rem auto;
+            margin: 0 auto;
             padding: 2rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            background:linear-gradient(to top, #40e0d0, #000000);
+
         }
 
         .content-wrapper {
@@ -119,8 +127,8 @@
 
         /* Standings styles */
         #fetchStandings {
-            background: #680a0a;
-            color: white;
+            background:  #40e0d0;
+            color: rgb(0, 0, 0);
             border: none;
             padding: 1rem 2rem;
             font-size: 1.1rem;
@@ -132,27 +140,31 @@
         }
 
         #fetchStandings:hover {
-            background: #8b2323;
+            background: rgba(64, 224, 208, 0.6);
         }
 
         .standings-table {
             width: 100%;
             border-collapse: collapse;
-            background: white;
+            background: rgb(0, 0, 0);
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
-        .standings-table th,
+        .standings-table th {
+            background: #40e0d0; 
+            color: #000000 !important;
+            /* font-weight: bold; */
+        }
+
+        .special-title {
+            color: var(--primary-turquoise);  /* or your exact hex, e.g. #40E0D0 */
+            text-shadow: 0 0 10px rgba(64,224,208,0.6);
+        }
+        
         .standings-table td {
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid #eee;
-        }
-
-        .standings-table th {
-            background: #680a0a;
-            color: white;
-            font-weight: bold;
         }
 
         .standings-table tr:nth-child(even) {
@@ -171,7 +183,7 @@
             display: none;
             border: 3px solid #f3f3f3;
             border-radius: 50%;
-            border-top: 3px solid #680a0a;
+            border-top: 3px solid rgba(64, 224, 208, 0.6);
             width: 24px;
             height: 24px;
             animation: spin 1s linear infinite;
@@ -193,12 +205,17 @@
         .back-button {
             display: inline-block;
             padding: 0.8rem 1.5rem;
-            background: #680a0a;
-            color: white;
+            background: rgba(64, 224, 208, 0.9) !important; /* More opaque */
+            color: #000000 !important; /* Black text for better contrast */
             text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
-            margin-bottom: 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            margin: 80px 0 2rem 0; /* Add top margin to clear the fixed nav */
+            font-weight: bold;
+            border: 2px solid #40e0d0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 100;
         }
 
         footer {
@@ -214,21 +231,28 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
     <nav>
-        <ul>
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="./index.html#about">About</a></li>
-            <li><a href="./index.html#projects">Projects</a></li>
-            <li><a href="./index.html#contact">Contact</a></li>
-        </ul>
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">
+                <img src="../../assets/images/heptagon.png" class="logo-frame" alt="NH frame">
+                <img src="../../assets/images/letters.jpg" class="logo-core" alt="NH letters">
+            </a>
+            <ul>
+                <li><a href="../../index.html#home">Home</a></li>
+                <li><a href="../../index.html#about">About</a></li>
+                <li><a href="../../index.html#projects">Projects</a></li>
+                <li><a href="../../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
     <div class="container">
-        <a href="/#projects" class="back-button">← Back to Projects</a>
+        <a href="../../index.html#projects" class="back-button">← Back to Projects</a>
   
-        <h1>Fixtures & League Standings </h1>
+        <h1 class="special-title">Fixtures &amp; League Standings</h1>
         
         <div class="content-wrapper">
             <!-- Matches Section -->
@@ -296,7 +320,7 @@
         
                 <!-- Right Section: Image -->
                 <div style="flex: 1; min-width: 300px; text-align: center;">
-                    <img src="Images/pipeline.jpg" alt="ETL Pipeline Design" style="width: 100%; max-width: 1100px; height: auto; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <img src="../../assets/images/pipelinee.jpg" alt="ETL Pipeline Design" style="width: 100%; max-width: 1100px; height: auto; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                     <p style="color: #000000; font-size: 0.9rem; margin-top: 10px;">Figure: Project Pipeline Design</p>
                 </div>
             </div>
