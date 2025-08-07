@@ -637,7 +637,7 @@ footer {
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero {
-        background-size: contain;
+        background-size: 100% auto;
         background-position: center;
         background-attachment: scroll;
         /* Alternative option - use 'auto' for original image dimensions */
