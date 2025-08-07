@@ -152,7 +152,7 @@ nav a:not(.logo):hover {
     height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url("../Images/Wallpaper.jpg");
     background-size: cover;
-    background-position: center +25px;
+    background-position: center +32px;
     background-attachment: fixed;
     display: flex;
     align-items: center;
@@ -637,9 +637,10 @@ footer {
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero {
-        background-size: 100% auto;
-        background-position: center;
+        background-size: cover;
+        background-position: center center;
         background-attachment: scroll;
+        height: 100vh;
         /* Alternative option - use 'auto' for original image dimensions */
         /* background-size: auto; */
     }
