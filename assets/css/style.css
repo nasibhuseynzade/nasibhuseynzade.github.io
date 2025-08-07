@@ -152,7 +152,7 @@ nav a:not(.logo):hover {
     height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url("../Images/Wallpaper.jpg");
     background-size: cover;
-    background-position: center +32px;
+    background-position: center +42px;
     background-attachment: fixed;
     display: flex;
     align-items: center;
@@ -633,20 +633,38 @@ footer {
         transform: translateY(0);
     }
 }
-
-/* Responsive Design */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
+    .nav-container {
+        padding: 0.5rem 1rem;
+    }
+    
+    .nav-container ul {
+        gap: 1rem;
+    }
+    
+    .nav-container ul li a {
+        font-size: 0.9rem; /* Smaller font for mobile */
+    }
     .hero {
         background-size: cover;
-        background-position: center center;
+        background-position: center center; /* Try different positions like 'center bottom' */
         background-attachment: scroll;
-        height: 100vh;
-        /* Alternative option - use 'auto' for original image dimensions */
-        /* background-size: auto; */
+        /* height: 100%; /* Adjust height for smaller screens */
     }
+    
+}
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero {
+        background-size: cover;
+        background-position: center center; /* Try different positions like 'center bottom' */
+        background-attachment: scroll;
+        /* height: 100%; /* Adjust height for smaller screens */
+    }
+    
     .nav-container {
         flex-direction: column;
-        gap: 1rem;
+        gap: 1rem;   
     }
 
     nav ul {
