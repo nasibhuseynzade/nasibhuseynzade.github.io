@@ -636,6 +636,13 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .hero {
+        background-size: contain;
+        background-position: center;
+        background-attachment: scroll;
+        /* Alternative option - use 'auto' for original image dimensions */
+        /* background-size: auto; */
+    }
     .nav-container {
         flex-direction: column;
         gap: 1rem;
