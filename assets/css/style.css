@@ -385,40 +385,6 @@ section {
     color: var(--white);
 }
 
-.about-item {
-    display: block;
-    margin: 0 0 1.5rem 0;
-    padding: 0.8rem 0;
-    border-bottom: 1px solid rgba(64, 224, 208, 0.1);
-    white-space: normal;
-    width: 100%;
-}
-
-.about-item:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-.about-item strong {
-    display: inline-block;
-    min-width: 120px;
-    margin-right: 1rem;
-    vertical-align: top;
-    color: var(--primary-turquoise);
-}
-
-/* Override typewriter styles for new structure */
-.about-content.animate-text .about-item {
-    font-size: 1.1rem;
-}
-
-
-
-
-
-
-
 .typewriter-text {
     opacity: 0;
     animation: typewriter 0.1s ease-in-out forwards;

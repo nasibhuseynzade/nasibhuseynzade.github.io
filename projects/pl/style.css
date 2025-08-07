@@ -5,6 +5,37 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+html, body {
+    background: linear-gradient(to top, #40e0d0, #000000) !important;
+    color: var(--light-turquoise);
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+}
+
+nav {
+    background: linear-gradient(to top, #762e29, #8b2323, #680a0a);
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    
+    gap: 2rem;
+}
+
 nav a {
     color: white;
     text-decoration: none;
@@ -16,6 +47,15 @@ nav a:hover {
     color: #3498db;
 }
 
+
+.container {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background:linear-gradient(to top, #40e0d0, #000000);
+
+}
 
 .content-wrapper {
     display: flex;
@@ -79,8 +119,8 @@ h1 {
 
 /* Standings styles */
 #fetchStandings {
-    background: #680a0a;
-    color: white;
+    background:  #40e0d0;
+    color: rgb(0, 0, 0);
     border: none;
     padding: 1rem 2rem;
     font-size: 1.1rem;
@@ -92,27 +132,31 @@ h1 {
 }
 
 #fetchStandings:hover {
-    background: #8b2323;
+    background: rgba(64, 224, 208, 0.6);
 }
 
 .standings-table {
     width: 100%;
     border-collapse: collapse;
-    background: white;
+    background: rgb(0, 0, 0);
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
-.standings-table th,
+.standings-table th {
+    background: #40e0d0; 
+    color: #000000 !important;
+    /* font-weight: bold; */
+}
+
+.special-title {
+    color: var(--primary-turquoise);  /* or your exact hex, e.g. #40E0D0 */
+    text-shadow: 0 0 10px rgba(64,224,208,0.6);
+}
+
 .standings-table td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #eee;
-}
-
-.standings-table th {
-    background: #680a0a;
-    color: white;
-    font-weight: bold;
 }
 
 .standings-table tr:nth-child(even) {
@@ -131,7 +175,7 @@ h1 {
     display: none;
     border: 3px solid #f3f3f3;
     border-radius: 50%;
-    border-top: 3px solid #680a0a;
+    border-top: 3px solid rgba(64, 224, 208, 0.6);
     width: 24px;
     height: 24px;
     animation: spin 1s linear infinite;
@@ -153,22 +197,19 @@ h1 {
 .back-button {
     display: inline-block;
     padding: 0.8rem 1.5rem;
-    background: #680a0a;
-    color: white;
+    background: rgba(64, 224, 208, 0.9) !important; /* More opaque */
+    color: #000000 !important; /* Black text for better contrast */
     text-decoration: none;
-    border-radius: 5px;
-    transition: background 0.3s;
-    margin-bottom: 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin: 80px 0 2rem 0; /* Add top margin to clear the fixed nav */
+    font-weight: bold;
+    border: 2px solid #40e0d0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 100;
 }
-.container { padding-top: 110px; }
 
-
-footer {
-    background: linear-gradient(to bottom, #762e29, #8b2323, #680a0a);
-    color: white;
-    text-align: center;
-    padding: 2rem;
-}
 
 @media (max-width: 768px) {
     .content-wrapper {

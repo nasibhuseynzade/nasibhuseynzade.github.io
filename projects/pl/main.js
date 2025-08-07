@@ -1,3 +1,4 @@
+// Matches functionality
 function saveMatchesToLocalStorage(matches) {
     localStorage.setItem('footballMatches', JSON.stringify(matches));
 }
