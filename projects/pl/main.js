@@ -135,13 +135,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Then fetch fresh matches from S3 in the background
     const matchesUrl = 'https://new-pl.s3.us-east-1.amazonaws.com/matches.json';
     
+
     fetch(`${matchesUrl}?t=${new Date().getTime()}`)
-        .then(response => response.json())
-        .then(data => {
-            saveMatchesToLocalStorage(data);
-            populateMatchesData(data);
-        })
-        .catch(error => console.error('Error fetching matches:', error));
+            .then(response => response.json())
+            .then(data => {
+                
+                if (data && Object.keys(data).length > 0) {
+                    saveMatchesToLocalStorage(data);
+                    populateMatchesData(data);
+                } else {
+                    console.warn("S3'ten boş veri geldi. Mevcut maç listesi korunuyor.");
+                }
+            })
+            .catch(error => console.error('Error fetching matches:', error));
 });
 
 document.getElementById('fetchStandings').addEventListener('click', async () => {
