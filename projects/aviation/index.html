@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviation Data Lakehouse</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            
+        }
+        
+        html, body {
+            background: linear-gradient(to top, #40e0d0, #000000) !important;
+            color: var(--light-turquoise);
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #041E42;  /* Fenerbahce Navy Blue */
+            color: #FFE000;  /* Fenerbahce Yellow */
+            text-align: center;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            flex: 1;
+            max-width: 1200px;
+            margin: 130px ;
+            padding: 2rem;
+            background:linear-gradient(to top, #40e0d0, #000000);
+
+        }
+        .project-description {
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+        .back-button {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: rgba(64, 224, 208, 0.9) !important; /* More opaque */
+            color: #000000 !important; /* Black text for better contrast */
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            margin: 120px 0 2rem 0; /* Add top margin to clear the fixed nav */
+            font-weight: bold;
+            border: 2px solid #40e0d0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 100;
+        }
+
+        .dashboard-container {
+            background: rgba(64, 224, 208, 0.6);
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-title {
+            color: #ffffff;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #d9fffb;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-stack {
+            color: #ffe066;
+            font-weight: bold;
+            margin-bottom: 1.25rem;
+        }
+
+        .dashboard-iframe {
+            width: 100%;
+            height: 700px;
+            border: 0;
+            border-radius: 6px;
+            background: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 110px 20px;
+            }
+
+            .dashboard-title {
+                font-size: 1.5rem;
+            }
+
+            .dashboard-iframe {
+                height: 530px;
+            }
+        }
+
+    </style>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">
+                <img src="../../assets/Images/heptagon.png" class="logo-frame" alt="NH frame">
+                <img src="../../assets/Images/letters.jpg" class="logo-core" alt="NH letters">
+            </a>
+            <ul>
+                <li><a href="../../index.html#home">Home</a></li>
+                <li><a href="../../index.html#about">About</a></li>
+                <li><a href="../../index.html#projects">Projects</a></li>
+                <li><a href="../../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <a href="../../index.html#projects" class="back-button">← Back to Projects</a>
+        <h1 class="dashboard-title">✈️ Frankfurt (FRA) Aviation Data Pipeline</h1>
+        
+        <p class="subtitle">This serverless pipeline is updated automatically by GCP Cloud Scheduler every hour.</p>
+        
+        <div class="dashboard-container">
+            <iframe
+                class="dashboard-iframe"
+                src="https://lookerstudio.google.com/embed/reporting/3817aa8e-bedc-4ecd-95a0-76f6206786e3/page/1oCuF"
+                allowfullscreen
+                sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
+            </iframe>
+        </div>
+
+        <div class="project-description">
+            <h2 style="color: #000000; font-size: 2rem; text-align: center; margin-bottom: 15px;">About This Project</h2>
+            <p style="color: #000000; font-size: 1.1rem; margin-bottom: 20px; text-align: justify;">
+                This application provides a dynamic and visually appealing analytics dashboard for Frankfurt Airport (FRA) 
+                outbound flights. Powered by a fully automated, serverless Medallion architecture, data is fetched hourly 
+                from the <a href="https://aviationstack.com" target="_blank" style="color: #3498db; text-decoration: none;">Aviationstack</a> API. 
+                Instead of processing raw data directly on the dashboard, a containerized PySpark job running on Google Cloud 
+                Run transforms the data through Bronze, Silver, and Gold layers. It applies advanced probability-based data 
+                augmentation for missing delays and stores the final structured data in Google BigQuery. This setup ensures 
+                data integrity, realistic visualizations, and highly optimized query performance.
+            </p>
+            <p style="color: #000000; font-size: 1.1rem; margin-bottom: 20px; text-align: justify;">
+                The source code for this project is available on GitHub at the following link: <a href="https://github.com/nasibhuseynzade/flight-data-pipeline" 
+                target="_blank" style="color: #3498db; text-decoration: none;">Aviation Pipeline</a>.
+            </p>
+        
+            <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 20px; margin-top: 20px;">
+        
+                <div style="flex: 1; min-width: 250px;">
+                    <h3 style="color: #000000; font-size: 1.5rem; margin-bottom: 10px;">Key Features</h3>
+                    <ul style="color: #000000; font-size: 1rem; margin-bottom: 20px; padding-left: 20px;">
+                        <li><strong>Serverless Medallion Architecture:</strong> Data flows seamlessly through Bronze, Silver, 
+                            and Gold layers using Apache Spark (PySpark) inside a Docker container.</li>
+                        <li><strong>Fully Automated CI/CD:</strong> Every code push triggers a GitHub Actions workflow that 
+                            securely builds and deploys the updated container to Google Cloud Run.</li>
+                        <li><strong>Zero Idle Costs:</strong> Scheduled via GCP Cloud Scheduler to run hourly, meaning you 
+                            only pay for the exact compute seconds used during the ETL process.</li>
+                    </ul>
+        
+                    <h3 style="color: #000000; font-size: 1.5rem; margin-bottom: 10px;">Technologies Used</h3>
+                    <ul style="color: #000000; font-size: 1rem; padding-left: 20px;">
+                        <li><strong>BI / Visualization:</strong> Looker Studio</li>
+                        <li><strong>Data Processing:</strong> Python, Apache Spark (PySpark), Pandas</li>
+                        <li><strong>Cloud:</strong> Google Cloud Platform (Cloud Run, Cloud Scheduler, BigQuery)</li>
+                        <li><strong>DevOps:</strong> Docker, GitHub Actions</li>
+                    
+                    </ul>
+                </div>
+        
+                <div style="flex: 1; min-width: 300px; text-align: center;">
+                    <img src="../../assets/Images/aviation_pipeline.png" alt="Serverless Aviation Data Pipeline Architecture" 
+                    style="width: 100%; max-width: 1100px; height: auto; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <p style="color: #000000; font-size: 0.9rem; margin-top: 10px;">Figure: Serverless Aviation Pipeline 
+                        with PySpark & GCP CI/CD</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Nasib Huseynzade. All rights reserved.</p>
+    </footer>
+</body>
+</html>
