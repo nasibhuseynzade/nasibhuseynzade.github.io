@@ -1,0 +1,38 @@
+html, body {
+    background: linear-gradient(to top, #40e0d0, #000000) !important;
+    color: var(--light-turquoise);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: linear-gradient(to top, #40e0d0, #000000);
+}
+
+.back-button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: rgba(64, 224, 208, 0.9) !important;
+    color: #000000 !important;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin: 120px 0 2rem 0;
+    font-weight: bold;
+    border: 2px solid #40e0d0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 100;
+}
+
+.dashboard-container {
+    background: rgba(64, 224, 208, 0.6);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}

@@ -401,11 +401,6 @@ section {
     }
 }
 
-.about-content.animate-text .about-list p {
-  display: block !important;
-  font-size: 1.1rem !important;
-}
-
 .about-content.animate-text .typewriter-text {
   font-size: inherit !important;
   display: inline !important;
@@ -645,13 +640,6 @@ footer {
     .nav-container ul li a {
         font-size: 0.9rem; /* Smaller font for mobile */
     }
-    .hero {
-        background-size: cover;
-        background-position: center center; /* Try different positions like 'center bottom' */
-        background-attachment: scroll;
-        /* height: 100%; /* Adjust height for smaller screens */
-    }
-    
 }
 /* Responsive Design */
 @media (max-width: 1024px) {
@@ -716,12 +704,6 @@ footer {
     .about-photo img {
         width: 200px;
         height: 200px;
-    }
-    
-    .about-content ul.about-list li strong {
-        min-width: auto;
-        display: block;
-        margin-bottom: 0.3rem;
     }
 }
 

@@ -7,7 +7,7 @@
 
 html, body {
     background: linear-gradient(to top, #40e0d0, #000000) !important;
-    color: var(--light-turquoise);
+    color: var(--black);
     margin: 0;
     padding: 0;
 }
@@ -16,25 +16,8 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: #ffffff;
 }
 
-nav {
-    background: linear-gradient(to top, #762e29, #8b2323, #680a0a);
-    padding: 1rem;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    
-    gap: 2rem;
-}
 
 nav a {
     color: white;
@@ -48,14 +31,7 @@ nav a:hover {
 }
 
 
-.container {
-    flex: 1;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-    background:linear-gradient(to top, #40e0d0, #000000);
 
-}
 
 .content-wrapper {
     display: flex;
@@ -145,7 +121,6 @@ h1 {
 .standings-table th {
     background: #40e0d0; 
     color: #000000 !important;
-    /* font-weight: bold; */
 }
 
 .special-title {
@@ -178,11 +153,11 @@ h1 {
     border-top: 3px solid rgba(64, 224, 208, 0.6);
     width: 24px;
     height: 24px;
-    animation: spin 1s linear infinite;
+    animation: loader-spin 1s linear infinite;
     margin: 20px auto;
 }
 
-@keyframes spin {
+@keyframes loader-spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
