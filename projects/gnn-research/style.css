@@ -179,6 +179,40 @@ html, body {
     box-shadow: 0 5px 15px rgba(64, 224, 208, 0.3);
 }
 
+.pdf-fallback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: #f5f5f5;
+    color: #333;
+    text-align: center;
+    padding: 2rem;
+}
+
+.pdf-fallback-icon {
+    font-size: 4rem;
+    color: var(--primary-turquoise);
+    margin-bottom: 1rem;
+}
+
+.pdf-fallback-title {
+    color: var(--primary-turquoise);
+    margin-bottom: 1rem;
+}
+
+.pdf-fallback-text {
+    margin-bottom: 2rem;
+}
+
+.pdf-fallback-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .back-button {
     display: inline-block;
     padding: 0.8rem 1.5rem;

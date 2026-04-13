@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeTypewriter();
     
     // Add smooth scrolling for navigation links
-    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    const navLinks = document.querySelectorAll('nav a:not(.logo)[href^="#"]');
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add active navigation highlighting
     const sections = document.querySelectorAll('section[id]');
-    const navItems = document.querySelectorAll('nav a[href^="#"]');
+    const navItems = document.querySelectorAll('nav a:not(.logo)[href^="#"]');
     
     function highlightNavigation() {
         let current = '';
@@ -85,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Listen for scroll events
-    window.addEventListener('scroll', highlightNavigation);
+    // Set initial state and update on scroll
+    highlightNavigation();
+    window.addEventListener('scroll', highlightNavigation, { passive: true });
 });

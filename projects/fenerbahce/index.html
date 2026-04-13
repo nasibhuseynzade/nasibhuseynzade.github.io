@@ -4,7 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fenerbahce Statistics Dashboard</title>
+    <meta name="description" content="Interactive Tableau dashboard presenting Fenerbahce football club performance statistics.">
+    <meta name="author" content="Nasib Huseynzade">
+    <meta name="theme-color" content="#0A0A0A">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Fenerbahce Statistics Dashboard - Nasib Huseynzade">
+    <meta property="og:description" content="Interactive Tableau dashboard presenting Fenerbahce football club performance statistics.">
+    <meta property="og:url" content="https://nasibhuseynzade.github.io/projects/fenerbahce/">
+    <meta property="og:image" content="https://nasibhuseynzade.github.io/assets/Images/tableauu.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fenerbahce Statistics Dashboard - Nasib Huseynzade">
+    <meta name="twitter:description" content="Interactive Tableau dashboard presenting Fenerbahce football club performance statistics.">
+    <meta name="twitter:image" content="https://nasibhuseynzade.github.io/assets/Images/tableauu.png">
+    <link rel="canonical" href="https://nasibhuseynzade.github.io/projects/fenerbahce/">
     <link rel="icon" type="image/jpeg" href="../../assets/Images/letters.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -26,17 +40,17 @@
 
     <div class="container">
         <a href="../../#projects" class="back-button">← Back to Projects</a>
-        <p style="color: #ffffff; font-size: 1.1rem; margin-bottom: 20px; text-align: justify;">
-            The source code for this project is available on GitHub at the following link: <a href="https://github.com/nasibhuseynzade/football-stats-pipeline" target="_blank" style="color: #3498db; text-decoration: none;">Fenerbahce Statistics</a>.
+        <p class="project-summary">
+            The source code for this project is available on GitHub at the following link: <a href="https://github.com/nasibhuseynzade/football-stats-pipeline" target="_blank" rel="noopener noreferrer" class="project-link">Fenerbahce Statistics</a>.
         </p>
         <div class="dashboard-container">
-            <div class='tableauPlaceholder' id='viz1736566307249' style='position: relative'>
+            <div class='tableauPlaceholder tableau-placeholder' id='viz1736566307249'>
                 <noscript>
                     <a href='#'>
-                        <img alt='Dashboard 1' src='https://public.tableau.com/static/images/fe/fenerbahce/Dashboard1/1_rss.png' style='border: none' />
+                        <img alt='Dashboard 1' src='https://public.tableau.com/static/images/fe/fenerbahce/Dashboard1/1_rss.png' class="tableau-noscript-image" />
                     </a>
                 </noscript>
-                <object class='tableauViz' style='display:none;'>
+                <object class='tableauViz'>
                     <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
                     <param name='embed_code_version' value='3' />
                     <param name='site_root' value='' />
@@ -57,8 +71,10 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 Nasib Huseynzade. All rights reserved.</p>
+        <p>&copy; <span data-current-year>2025</span> Nasib Huseynzade. All rights reserved.</p>
     </footer>
+
+    <script src="../../assets/js/site.js"></script>
 
     <script type='text/javascript'>
         var divElement = document.getElementById('viz1736566307249');
@@ -72,7 +88,7 @@
             vizElement.style.height = (divElement.offsetWidth * 0.60) + 'px';
         } else {
             vizElement.style.width = '100%';
-            vizElement.style.height = '1227px';  // Updated height for mobile view
+            vizElement.style.height = Math.round(Math.min(Math.max(window.innerHeight * 0.118, 220), 260)) + 'px';
         }
         
         var scriptElement = document.createElement('script');

@@ -3,7 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mitigation of Over-squashing in GNNs - Nasib Huseynzade</title>
+    <title>Optimal and Automated Metapath Selection for Heterogeneous Graph Neural Networks - Nasib Huseynzade</title>
+    <meta name="description" content="Master's thesis project on optimal and automated metapath selection for Heterogeneous Graph Neural Networks.">
+    <meta name="author" content="Nasib Huseynzade">
+    <meta name="theme-color" content="#0A0A0A">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Thesis Project - Nasib Huseynzade">
+    <meta property="og:description" content="Master's thesis project on optimal and automated metapath selection for Heterogeneous Graph Neural Networks.">
+    <meta property="og:url" content="https://nasibhuseynzade.github.io/projects/thesis/">
+    <meta property="og:image" content="https://nasibhuseynzade.github.io/assets/Images/hgnns.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Thesis Project - Nasib Huseynzade">
+    <meta name="twitter:description" content="Master's thesis project on optimal and automated metapath selection for Heterogeneous Graph Neural Networks.">
+    <meta name="twitter:image" content="https://nasibhuseynzade.github.io/assets/Images/hgnns.jpg">
+    <link rel="canonical" href="https://nasibhuseynzade.github.io/projects/thesis/">
     <link rel="icon" type="image/jpeg" href="../../assets/Images/letters.jpg">
     
     <!-- External CSS -->
@@ -46,7 +59,7 @@
                 <div class="pdf-content">
                     <div class="pdf-wrapper">
                         <div class="pdf-controls">
-                            <a href="SRP_papere.pdf" class="pdf-btn" target="_blank">
+                            <a href="SRP_papere.pdf" class="pdf-btn" target="_blank" rel="noopener noreferrer">
                                 <i class="fas fa-external-link-alt"></i>
                                 Open Full Screen
                             </a>
@@ -70,9 +83,10 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 Nasib Huseynzade. All rights reserved.</p>
+        <p>&copy; <span data-current-year>2025</span> Nasib Huseynzade. All rights reserved.</p>
     </footer>
 
+    <script src="../../assets/js/site.js"></script>
     <script>
         // Simple fallback check
         document.addEventListener('DOMContentLoaded', function() {
@@ -85,12 +99,12 @@
                     // If iframe doesn't load, show fallback
                     if (!iframe.contentDocument && !iframe.contentWindow) {
                         wrapper.innerHTML = `
-                            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; background: #f5f5f5; color: #333; text-align: center; padding: 2rem;">
-                                <i class="fas fa-file-pdf" style="font-size: 4rem; color: var(--primary-turquoise); margin-bottom: 1rem;"></i>
-                                <h3 style="color: var(--primary-turquoise); margin-bottom: 1rem;">PDF Preview</h3>
-                                <p style="margin-bottom: 2rem;">Click below to view or download the research paper</p>
-                                <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
-                                    <a href="SRP_paper.pdf" target="_blank" class="pdf-btn">
+                            <div class="pdf-fallback">
+                                <i class="fas fa-file-pdf pdf-fallback-icon"></i>
+                                <h3 class="pdf-fallback-title">PDF Preview</h3>
+                                <p class="pdf-fallback-text">Click below to view or download the research paper</p>
+                                <div class="pdf-fallback-actions">
+                                    <a href="SRP_paper.pdf" target="_blank" rel="noopener noreferrer" class="pdf-btn">
                                         <i class="fas fa-eye"></i>
                                         View PDF
                                     </a>

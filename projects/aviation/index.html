@@ -4,7 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aviation Data Lakehouse</title>
+    <meta name="description" content="End-to-end aviation analytics project with a serverless medallion ETL architecture and interactive dashboard.">
+    <meta name="author" content="Nasib Huseynzade">
+    <meta name="theme-color" content="#0A0A0A">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Aviation Data Lakehouse - Nasib Huseynzade">
+    <meta property="og:description" content="End-to-end aviation analytics project with a serverless medallion ETL architecture and interactive dashboard.">
+    <meta property="og:url" content="https://nasibhuseynzade.github.io/projects/aviation/">
+    <meta property="og:image" content="https://nasibhuseynzade.github.io/assets/Images/aviation.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Aviation Data Lakehouse - Nasib Huseynzade">
+    <meta name="twitter:description" content="End-to-end aviation analytics project with a serverless medallion ETL architecture and interactive dashboard.">
+    <meta name="twitter:image" content="https://nasibhuseynzade.github.io/assets/Images/aviation.png">
+    <link rel="canonical" href="https://nasibhuseynzade.github.io/projects/aviation/">
     <link rel="icon" type="image/jpeg" href="../../assets/Images/letters.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -28,7 +42,7 @@
         <a href="../../#projects" class="back-button">← Back to Projects</a>
         <h1 class="dashboard-title">✈️ Frankfurt (FRA) Aviation Data Pipeline</h1>
         
-        <p class="subtitle">This serverless pipeline is updated automatically by GCP Cloud Scheduler every hour.</p>
+        <p class="subtitle">This serverless pipeline is updated automatically by GCP Cloud Scheduler every day.</p>
         
         <div class="dashboard-container">
             <iframe
@@ -40,26 +54,26 @@
         </div>
 
         <div class="project-description">
-            <h2 style="color: #000000; font-size: 2rem; text-align: center; margin-bottom: 15px;">About This Project</h2>
-            <p style="color: #000000; font-size: 1.1rem; margin-bottom: 20px; text-align: justify;">
+            <h2 class="project-section-title">About This Project</h2>
+            <p class="project-text">
                 This application provides a dynamic and visually appealing analytics dashboard for Frankfurt Airport (FRA) 
                 outbound flights. Powered by a fully automated, serverless Medallion architecture, data is fetched hourly 
-                from the <a href="https://aviationstack.com" target="_blank" style="color: #3498db; text-decoration: none;">Aviationstack</a> API. 
+                from the <a href="https://aviationstack.com" target="_blank" rel="noopener noreferrer" class="project-link">Aviationstack</a> API. 
                 Instead of processing raw data directly on the dashboard, a containerized PySpark job running on Google Cloud 
                 Run transforms the data through Bronze, Silver, and Gold layers. It applies advanced probability-based data 
                 augmentation for missing delays and stores the final structured data in Google BigQuery. This setup ensures 
                 data integrity, realistic visualizations, and highly optimized query performance.
             </p>
-            <p style="color: #000000; font-size: 1.1rem; margin-bottom: 20px; text-align: justify;">
+            <p class="project-text">
                 The source code for this project is available on GitHub at the following link: <a href="https://github.com/nasibhuseynzade/flight-data-pipeline" 
-                target="_blank" style="color: #3498db; text-decoration: none;">Aviation Pipeline</a>.
+                target="_blank" rel="noopener noreferrer" class="project-link">Aviation Pipeline</a>.
             </p>
         
-            <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 20px; margin-top: 20px;">
+            <div class="project-details-grid">
         
-                <div style="flex: 1; min-width: 250px;">
-                    <h3 style="color: #000000; font-size: 1.5rem; margin-bottom: 10px;">Key Features</h3>
-                    <ul style="color: #000000; font-size: 1rem; margin-bottom: 20px; padding-left: 20px;">
+                <div class="project-details-column">
+                    <h3 class="project-subtitle">Key Features</h3>
+                    <ul class="project-list project-list-spaced">
                         <li><strong>Serverless Medallion Architecture:</strong> Data flows seamlessly through Bronze, Silver, 
                             and Gold layers using Apache Spark (PySpark) inside a Docker container.</li>
                         <li><strong>Fully Automated CI/CD:</strong> Every code push triggers a GitHub Actions workflow that 
@@ -68,8 +82,8 @@
                             only pay for the exact compute seconds used during the ETL process.</li>
                     </ul>
         
-                    <h3 style="color: #000000; font-size: 1.5rem; margin-bottom: 10px;">Technologies Used</h3>
-                    <ul style="color: #000000; font-size: 1rem; padding-left: 20px;">
+                    <h3 class="project-subtitle">Technologies Used</h3>
+                    <ul class="project-list">
                         <li><strong>BI / Visualization:</strong> Looker Studio</li>
                         <li><strong>Data Processing:</strong> Python, Apache Spark (PySpark), Pandas</li>
                         <li><strong>Cloud:</strong> Google Cloud Platform (Cloud Run, Cloud Scheduler, BigQuery)</li>
@@ -78,10 +92,9 @@
                     </ul>
                 </div>
         
-                <div style="flex: 1; min-width: 300px; text-align: center;">
-                    <img src="../../assets/Images/aviation_pipeline.png" alt="Serverless Aviation Data Pipeline Architecture" 
-                    style="width: 100%; max-width: 1100px; height: auto; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                    <p style="color: #000000; font-size: 0.9rem; margin-top: 10px;">Figure: Serverless Aviation Pipeline 
+                <div class="project-figure">
+                    <img src="../../assets/Images/aviation_pipeline.png" alt="Serverless Aviation Data Pipeline Architecture" class="project-figure-image">
+                    <p class="project-figure-caption">Figure: Serverless Aviation Pipeline 
                         with PySpark & GCP CI/CD</p>
                 </div>
             </div>
@@ -89,7 +102,9 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 Nasib Huseynzade. All rights reserved.</p>
+        <p>&copy; <span data-current-year>2025</span> Nasib Huseynzade. All rights reserved.</p>
     </footer>
+
+    <script src="../../assets/js/site.js"></script>
 </body>
 </html>

@@ -36,3 +36,46 @@ html, body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 2rem;
 }
+
+.project-summary {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.project-link {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.tableau-placeholder {
+    position: relative;
+}
+
+.tableau-noscript-image {
+    border: none;
+}
+
+.tableauViz {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 0;
+        padding: 1rem 0.05rem;
+    }
+
+    .dashboard-container {
+        padding: 0.25rem;
+    }
+
+    .tableauPlaceholder,
+    .tableau-placeholder,
+    .tableauPlaceholder iframe,
+    .tableau-placeholder iframe {
+        width: 100% !important;
+        max-width: 100%;
+    }
+}
