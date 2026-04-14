@@ -5,6 +5,51 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     var isLocalFile = window.location.protocol === 'file:';
+    var sectionIds = ['home', 'about', 'projects', 'contact'];
+
+    function normalizeSectionHref(href) {
+        if (href.startsWith('#')) {
+            return href;
+        }
+
+        var match = href.match(/#([a-z0-9_-]+)$/i);
+        if (!match) {
+            return href;
+        }
+
+        var section = match[1].toLowerCase();
+        if (!sectionIds.includes(section)) {
+            return href;
+        }
+
+        var baseHref = href.slice(0, -match[0].length);
+        if (section === 'home') {
+            return baseHref;
+        }
+
+        var separator = baseHref.includes('?') ? '&' : '?';
+        return baseHref + separator + 'section=' + section;
+    }
+
+    function applyLocalIndexFallback(href) {
+        if (!isLocalFile || href.startsWith('#')) {
+            return href;
+        }
+
+        var hashIndex = href.indexOf('#');
+        var hash = hashIndex >= 0 ? href.slice(hashIndex) : '';
+        var pathAndQuery = hashIndex >= 0 ? href.slice(0, hashIndex) : href;
+
+        var queryIndex = pathAndQuery.indexOf('?');
+        var path = queryIndex >= 0 ? pathAndQuery.slice(0, queryIndex) : pathAndQuery;
+        var query = queryIndex >= 0 ? pathAndQuery.slice(queryIndex) : '';
+
+        if (path.endsWith('/')) {
+            path += 'index.html';
+        }
+
+        return path + query + hash;
+    }
 
     document.querySelectorAll('a[href]').forEach(function (link) {
         var href = link.getAttribute('href');
@@ -23,36 +68,30 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Use clean homepage URL instead of /#home when navigating from project pages.
-        if (href !== '#home' && href.endsWith('#home')) {
-            href = href.slice(0, -'#home'.length);
-        }
-
-        if (href !== '#about' && href.endsWith('#about')) {
-            href = href.slice(0, -'#about'.length);
-        }
-
-        if (href !== '#projects' && href.endsWith('#projects')) {
-            href = href.slice(0, -'#projects'.length);
-        }
-        
-        if (href !== '#contact' && href.endsWith('#contact')) {
-            href = href.slice(0, -'#contact'.length);
-        }
-
-        // On file://, directory-style links open folders; force index.html fallback.
-        if (isLocalFile && !href.startsWith('#')) {
-            var parts = href.split('#');
-            var path = parts[0];
-            var hash = parts.length > 1 ? '#' + parts.slice(1).join('#') : '';
-
-            if (path.endsWith('/')) {
-                href = path + 'index.html' + hash;
-            } else {
-                href = path + hash;
-            }
-        }
+        href = normalizeSectionHref(href);
+        href = applyLocalIndexFallback(href);
 
         link.setAttribute('href', href);
     });
+
+    var requestedSection = new URLSearchParams(window.location.search).get('section');
+    if (requestedSection) {
+        var sectionId = requestedSection.toLowerCase();
+
+        if (sectionIds.includes(sectionId)) {
+            if (sectionId === 'home') {
+                window.scrollTo(0, 0);
+            } else {
+                var targetSection = document.getElementById(sectionId);
+                if (targetSection) {
+                    var offsetTop = targetSection.offsetTop - 80;
+                    window.scrollTo(0, Math.max(0, offsetTop));
+                }
+            }
+
+            if (window.history && typeof window.history.replaceState === 'function') {
+                window.history.replaceState(null, '', window.location.pathname);
+            }
+        }
+    }
 });
