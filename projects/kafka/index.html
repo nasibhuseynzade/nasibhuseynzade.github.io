@@ -8,12 +8,12 @@
     <meta name="author" content="Nasib Huseynzade">
     <meta name="theme-color" content="#0A0A0A">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Fenerbahce Statistics Dashboard - Nasib Huseynzade">
+    <meta property="og:title" content="Streaming Grafana dashboard - Nasib Huseynzade">
     <meta property="og:description" content="Interactive Tableau dashboard presenting Fenerbahce football club performance statistics.">
     <meta property="og:url" content="https://nasibhuseynzade.github.io/projects/fenerbahce/">
     <meta property="og:image" content="https://nasibhuseynzade.github.io/assets/Images/tableauu.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Fenerbahce Statistics Dashboard - Nasib Huseynzade">
+    <meta name="twitter:title" content="Streaming Grafana dashboard - Nasib Huseynzade">
     <meta name="twitter:description" content="Interactive Tableau dashboard presenting Fenerbahce football club performance statistics.">
     <meta name="twitter:image" content="https://nasibhuseynzade.github.io/assets/Images/tableauu.png">
     <link rel="canonical" href="https://nasibhuseynzade.github.io/projects/fenerbahce/">
@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="kafka-page">
     
     <nav>
         <div class="nav-container">
@@ -40,7 +40,28 @@
         </div>        
     </nav>
 
-    
+
+    <div class="container">
+        <a href="../../#projects" class="back-button">&larr; Back to Projects</a>
+        <h1 class="dashboard-title">Streaming Data Dashboard with Grafana</h1>
+        <p class="subtitle">The dashboard is under development and will be published on May 15.</p>
+
+        <div class="dashboard-container">
+            <iframe
+                class="dashboard-iframe"
+                src="https://data.nasib.tech/d/ad2sn2t/new-dashboard?orgId=1&from=now-5m&to=now&timezone=browser&refresh=5s"
+                title="Real-Time Data Dashboard with Kafka"
+                loading="lazy"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="project-figure">
+            <img src="../../assets/Images/finance_pipeline.jpg" alt="Kafka project data pipeline diagram" class="project-figure-image">
+            <p class="project-figure-caption">Project Pipeline</p>
+        </div>
+    </div>
+
 
     <footer>
         <p>&copy; <span data-current-year>2025</span> Nasib Huseynzade. All rights reserved.</p>
