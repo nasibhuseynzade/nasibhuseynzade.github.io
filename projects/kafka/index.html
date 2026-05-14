@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fenerbahce Statistics Dashboard</title>
+    <title>Finance Streaming Dashboard</title>
     <meta name="description" content="Interactive Tableau dashboard presenting Fenerbahce football club performance statistics.">
     <meta name="author" content="Nasib Huseynzade">
     <meta name="theme-color" content="#0A0A0A">
@@ -44,7 +44,6 @@
     <div class="container">
         <a href="../../#projects" class="back-button">&larr; Back to Projects</a>
         <h1 class="dashboard-title">Streaming Data Dashboard with Grafana</h1>
-        <p class="subtitle">The dashboard is under development and will be published on May 15.</p>
 
         <div class="dashboard-container">
             <iframe
@@ -56,10 +55,49 @@
             </iframe>
         </div>
 
-        <div class="project-figure">
-            <img src="../../assets/Images/finance_pipeline.jpg" alt="Kafka project data pipeline diagram" class="project-figure-image">
-            <p class="project-figure-caption">Project Pipeline</p>
+        <div class="project-description">
+            <h2 class="project-section-title">About This Project</h2>
+            <p class="project-text">
+                This project is an end-to-end, real-time quantitative analytics platform that monitors global macro-economic 
+                indicators, including Bitcoin, Gold, Silver, and the US Dollar Index (DXY). Data is continuously fetched 
+                from the Yahoo Finance API via a Python producer and streamed asynchronously through an Apache Kafka cluster. 
+                A dedicated Python consumer processes these events and writes them into InfluxDB, a high-performance time-series database. 
+                The architecture goes beyond simple data display by incorporating a quantitative engine built directly into Grafana, 
+                featuring dynamic threshold alerts, moving average (SMA) crossovers, and a rule-based Market Regime detection algorithm. 
+                The entire infrastructure is containerized and hosted on an AWS EC2 instance, secured with a Caddy reverse proxy.</p>
+            <p class="project-text">
+                The source code for this project is available on GitHub at the following link: <a href="https://github.com/nasibhuseynzade/realtime-finance" 
+                target="_blank" rel="noopener noreferrer" class="project-link">Real-time Finance Dashboard</a>.
+            </p>
+        
+            <div class="project-details-grid">
+        
+                <div class="project-details-column">
+                    <h3 class="project-subtitle">Key Features</h3>
+                    <ul class="project-list project-list-spaced">
+                        <li><strong>Event-Driven Architecture:</strong> Decoupled Python Producer and Consumer microservices communicating reliably via an Apache Kafka message broker.</li>
+                        <li><strong>Quantitative Analytics Engine:</strong> Real-time calculation of Gold/Silver ratios, momentum percentages, and logical market regime signals (Bullish/Bearish) using Grafana Math Expressions.</li>
+                        <li><strong>Fully Automated CI/CD:</strong> A GitHub Actions pipeline automatically rebuilds and deploys the Docker Compose stack to the AWS EC2 production environment upon every code push.</li>
+                    </ul>
+        
+                    <h3 class="project-subtitle">Technologies Used</h3>
+                    <ul class="project-list">
+                        <li><strong>BI / Visualization:</strong> Grafana (Embedded Kiosk Mode)</li>
+                        <li><strong>Data Streaming & Storage:</strong> Apache Kafka, Zookeeper, InfluxDB</li>
+                        <li><strong>Data Processing:</strong> Python, Yahoo Finance API (yfinance)</li>
+                        <li><strong>Cloud & DevOps:</strong> AWS (EC2), Docker, GitHub Actions, Caddy (SSL/Proxy)</li>
+                    </ul>
+                </div>
+        
+                <div class="project-figure">
+                    <img src="../../assets/Images/finance_pipeline.jpeg" alt="Serverless Aviation Data Pipeline Architecture" class="project-figure-image">
+                    <p class="project-figure-caption">Figure: Serverless Aviation Pipeline 
+                        with PySpark & GCP CI/CD</p>
+                </div>
+            </div>
         </div>
+
+        
     </div>
 
 
