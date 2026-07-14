@@ -417,6 +417,179 @@ section {
   display: inline !important;
 }
 
+/* Certifications (within About) */
+.certifications {
+    max-width: 2000px;
+    margin: 4rem auto 0;
+}
+
+.certifications-title {
+    text-align: center;
+    font-family: 'Orbitron', monospace;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.certifications-title::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-turquoise), var(--accent-turquoise));
+    border-radius: 2px;
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    justify-content: center;
+    gap: 2.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.cert-card {
+    background: var(--dark-gray);
+    border: 2px solid var(--primary-turquoise);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.cert-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(64, 224, 208, 0.3);
+}
+
+.cert-image {
+    display: block;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(64, 224, 208, 0.2);
+}
+
+.cert-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.cert-card:hover .cert-image img {
+    transform: scale(1.05);
+}
+
+.cert-content {
+    padding: 2rem;
+}
+
+.cert-name {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 0.9rem;
+    color: var(--primary-turquoise);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cert-sub {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem 1.5rem;
+}
+
+.cert-sub .btn,
+.cert-sub .cert-status {
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.cert-issuer {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--light-turquoise);
+    letter-spacing: 1px;
+}
+
+.cert-date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--white);
+}
+
+.cert-date i {
+    color: var(--primary-turquoise);
+}
+
+.cert-upcoming .cert-date i {
+    color: var(--dark-turquoise);
+}
+
+/* Upcoming certification (not yet earned) */
+.cert-upcoming {
+    border-style: dashed;
+    border-color: var(--dark-turquoise);
+}
+
+.cert-upcoming .cert-name {
+    color: var(--dark-turquoise);
+}
+
+.cert-placeholder {
+    aspect-ratio: 1400 / 738;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: rgba(64, 224, 208, 0.05);
+    border-bottom: 1px dashed rgba(64, 224, 208, 0.25);
+}
+
+.cert-placeholder i {
+    font-size: 3.5rem;
+    color: var(--dark-turquoise);
+    opacity: 0.75;
+}
+
+.cert-placeholder span {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dark-turquoise);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.cert-status {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: 2px solid var(--dark-turquoise);
+    border-radius: 25px;
+    color: var(--dark-turquoise);
+    font-family: 'Orbitron', monospace;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
 /* Projects Section */
 #projects {
     background: var(--black);
@@ -726,11 +899,25 @@ footer {
         width: 200px;
         height: 200px;
     }
+
+    .cert-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .certifications-title {
+        font-size: 1.6rem;
+    }
 }
 
 @media (max-width: 768px) {
     nav {
         padding: 0.9rem 1rem;
+    }
+
+    /* once the sub row wraps, the action reads better flush left */
+    .cert-sub .btn,
+    .cert-sub .cert-status {
+        margin-left: 0;
     }
 
     .hero {

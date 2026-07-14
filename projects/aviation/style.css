@@ -56,12 +56,6 @@ html, body {
     margin-bottom: 0.5rem;
 }
 
-.tech-stack {
-    color: #ffe066;
-    font-weight: bold;
-    margin-bottom: 1.25rem;
-}
-
 .dashboard-iframe {
     width: 100%;
     height: 700px;

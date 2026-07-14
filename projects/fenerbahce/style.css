@@ -49,14 +49,6 @@ html, body {
     text-decoration: none;
 }
 
-.tableau-placeholder {
-    position: relative;
-}
-
-.tableau-noscript-image {
-    border: none;
-}
-
 .tableauViz {
     display: none;
 }
@@ -72,9 +64,7 @@ html, body {
     }
 
     .tableauPlaceholder,
-    .tableau-placeholder,
-    .tableauPlaceholder iframe,
-    .tableau-placeholder iframe {
+    .tableauPlaceholder iframe {
         width: 100% !important;
         max-width: 100%;
     }
