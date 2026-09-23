@@ -93,35 +93,65 @@
 
         <div class="certifications">
             <h3 class="certifications-title">Certifications</h3>
-            <div class="cert-grid">
-                <div class="cert-card">
-                    <a class="cert-image" href="https://learn.microsoft.com/en-us/users/nasibhuseynzade/credentials/certification/data-analyst-associate" target="_blank" rel="noopener noreferrer" aria-label="View the PL-300 credential on Microsoft Learn">
-                        <img src="assets/Images/pl300_certificate.png" alt="Microsoft Certified: Power BI Data Analyst Associate certificate awarded to Nasib Huseynzade" loading="lazy" decoding="async" width="1400" height="738">
-                    </a>
-                    <div class="cert-content">
-                        <h4 class="cert-name">Power BI Data Analyst Associate</h4>
-                        <div class="cert-sub">
-                            <span class="cert-issuer">Microsoft &middot; PL-300</span>
-                            <span class="cert-date"><i class="fas fa-calendar-check"></i> Earned July 2026</span>
-                            <a href="https://learn.microsoft.com/en-us/users/nasibhuseynzade/credentials/54007ebbbf10a1c6" class="btn" target="_blank" rel="noopener noreferrer">Verify</a>
+            <div class="carousel cert-carousel">
+                <div class="carousel-viewport">
+                    <div class="carousel-track">
+                        <div class="cert-card">
+                            <a class="cert-image" href="https://learn.microsoft.com/en-us/users/nasibhuseynzade/credentials/certification/data-analyst-associate" target="_blank" rel="noopener noreferrer" aria-label="View the PL-300 credential on Microsoft Learn">
+                                <img src="assets/Images/pl300_certificate.png" alt="Microsoft Certified: Power BI Data Analyst Associate certificate awarded to Nasib Huseynzade" loading="lazy" decoding="async" width="1400" height="738">
+                            </a>
+                            <div class="cert-content">
+                                <h4 class="cert-name">Power BI Data Analyst Associate</h4>
+                                <div class="cert-sub">
+                                    <div class="cert-meta">
+                                        <span class="cert-issuer">Microsoft &middot; PL-300</span>
+                                        <span class="cert-date"><i class="fas fa-calendar-check"></i> Earned July 2026</span>
+                                    </div>
+                                    <a href="https://learn.microsoft.com/en-us/users/nasibhuseynzade/credentials/54007ebbbf10a1c6" class="btn" target="_blank" rel="noopener noreferrer">Verify</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="cert-card cert-upcoming">
-                    <div class="cert-placeholder">
-                        <i class="fas fa-hourglass-start"></i>
-                        <span>Coming Soon</span>
-                    </div>
-                    <div class="cert-content">
-                        <h4 class="cert-name">Fabric Analytics Engineer Associate</h4>
-                        <div class="cert-sub">
-                            <span class="cert-issuer">Microsoft &middot; DP-600</span>
-                            <span class="cert-date"><i class="fas fa-calendar-day"></i> Exam planned for August 2026</span>
-                            <span class="cert-status">Planned</span>
+                        <div class="cert-card">
+                            <a class="cert-image cert-image-aws" href="https://aws.amazon.com/verification" target="_blank" rel="noopener noreferrer" aria-label="Verify the AWS Certified AI Practitioner credential">
+                                <img src="assets/Images/aws_ai_practitioner_certificate.png" alt="AWS Certified AI Practitioner certificate awarded to Nasib Huseynzade" loading="lazy" decoding="async" width="1400" height="1082">
+                            </a>
+                            <div class="cert-content">
+                                <h4 class="cert-name">AWS Certified AI Practitioner</h4>
+                                <div class="cert-sub">
+                                    <div class="cert-meta">
+                                        <span class="cert-issuer">AWS &middot; AIF-C01</span>
+                                        <span class="cert-date"><i class="fas fa-calendar-check"></i> Earned September 2026</span>
+                                    </div>
+                                    <a href="https://www.credly.com/earner/earned/badge/0ab7e2ee-48bc-41ba-9e3f-0cb5c3e7af41" class="btn" target="_blank" rel="noopener noreferrer">Verify</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cert-card cert-upcoming">
+                            <div class="cert-placeholder">
+                                <i class="fas fa-hourglass-start"></i>
+                                <span>Coming Soon</span>
+                            </div>
+                            <div class="cert-content">
+                                <h4 class="cert-name">Fabric Analytics Engineer Associate</h4>
+                                <div class="cert-sub">
+                                    <div class="cert-meta">
+                                        <span class="cert-issuer">Microsoft &middot; DP-600</span>
+                                        <span class="cert-date"><i class="fas fa-calendar-day"></i> October 2026</span>
+                                    </div>
+                                    <span class="cert-status">Planned</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <button class="carousel-nav carousel-prev" type="button" aria-label="Show the previous certification">
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                </button>
+                <button class="carousel-nav carousel-next" type="button" aria-label="Show the next certification">
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -130,62 +160,69 @@
     <section id="projects">
         <div class="container">
             <h2 class="section-title">My Projects</h2>
-            <div class="projects-grid">
+            <div class="carousel projects-carousel">
+                <div class="carousel-viewport">
+                    <div class="carousel-track">
 
-                <div class="project-card">
-                    <img src="assets/Images/finance_.png" alt="Streaming Finance Dashboard" loading="lazy" decoding="async">
-                    <div class="project-content">
-                        <h3 class="project-title-compact">Streaming Finance Dashboard </h3>
-                        <p>Grafana Dashboard with Streaming Data Pipeline</p>
-                        <a href="projects/kafka/" class="btn">View Project</a>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <img src="assets/Images/aviation.png" alt="Aviation ETL Project" loading="lazy" decoding="async">
-                    <div class="project-content">
-                        <h3 class="project-title-compact">End-to-End Aviation Data Analytics</h3>
-                        <p>Aviation Dashboard on Looker Studio </p>
-                        <a href="projects/aviation/" class="btn">View Project</a>
-                    </div>
-                </div>
+                        <div class="project-card">
+                            <img src="assets/Images/finance_.png" alt="Streaming Finance Dashboard" loading="lazy" decoding="async">
+                            <div class="project-content">
+                                <h3>Streaming Finance Dashboard</h3>
+                                <p>Grafana Dashboard with Streaming Data Pipeline</p>
+                                <a href="projects/kafka/" class="btn">View Project</a>
+                            </div>
+                        </div>
 
-                <div class="project-card">
-                    <img src="assets/Images/fener.png" alt="Tableau Project" loading="lazy" decoding="async">
-                    <div class="project-content">
-                        <h3>Fenerbahce  Dashboard</h3>
-                        <p>Statistics Dashboard of Fenerbahce Football Club on Tableau. </p>
-                        <a href="projects/fenerbahce/" class="btn">View Project</a>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <img src="assets/Images/graphs.png" alt="Mitigating Over-squashing in GNNs" loading="lazy" decoding="async">
-                    <div class="project-content">
-                        <h3>Research Project</h3>
-                        <p>Research Project on Mitigation of Over-squashing with Rewiring Methods.</p>
-                        <a href="projects/gnn-research/" class="btn">View Project</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="assets/Images/pl.png" alt="PL Statistics Project" loading="lazy" decoding="async">
-                    <div class="project-content">
-                        <h3 class="project-title-compact">Football Statistics with Serverless ETL </h3>
-                        <p>PL Statistics with Near Real-Time ETL Pipeline</p>
-                        <a href="projects/pl/" class="btn">View Project</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="assets/Images/hgnns.jpg" alt="Heterogeneous Graph Neural Networks" loading="lazy" decoding="async">
-                    <div class="project-content">
-                        <h3>Thesis Project</h3>
-                        <p>Master's Thesis Project on Heterogeneous Graph Neural Networks. (Coming Soon)</p>
-                        <a href="projects/thesis/" class="btn">View Project</a>
-                    </div>
-                </div>
+                        <div class="project-card">
+                            <img src="assets/Images/fener.png" alt="Tableau Project" loading="lazy" decoding="async">
+                            <div class="project-content">
+                                <h3>Fenerbahce Dashboard</h3>
+                                <p>Statistics Dashboard of Fenerbahce Football Club on Tableau.</p>
+                                <a href="projects/fenerbahce/" class="btn">View Project</a>
+                            </div>
+                        </div>
 
-                
+                        <div class="project-card">
+                            <img src="assets/Images/aviation.png" alt="Aviation ETL Project" loading="lazy" decoding="async">
+                            <div class="project-content">
+                                <h3>End-to-End Aviation Data Analytics</h3>
+                                <p>Aviation Dashboard on Looker Studio</p>
+                                <a href="projects/aviation/" class="btn">View Project</a>
+                            </div>
+                        </div>
 
+                        <div class="project-card">
+                            <img src="assets/Images/graphs.png" alt="Mitigating Over-squashing in GNNs" loading="lazy" decoding="async">
+                            <div class="project-content">
+                                <h3>Research Project</h3>
+                                <p>Mitigating Over-squashing in GNNs with Rewiring Methods.</p>
+                                <a href="projects/gnn-research/" class="btn">View Project</a>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <img src="assets/Images/pl.png" alt="PL Statistics Project" loading="lazy" decoding="async">
+                            <div class="project-content">
+                                <h3>Football Statistics with Serverless ETL</h3>
+                                <p>PL Statistics with Near Real-Time ETL Pipeline</p>
+                                <a href="projects/pl/" class="btn">View Project</a>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <img src="assets/Images/hgnns.jpg" alt="Heterogeneous Graph Neural Networks" loading="lazy" decoding="async">
+                            <div class="project-content">
+                                <h3>Thesis Project</h3>
+                                <p>Master's Thesis Project on Heterogeneous Graph Neural Networks. (Coming Soon)</p>
+                                <a href="projects/thesis/" class="btn">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-nav carousel-prev" type="button" aria-label="Show the previous project">
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                </button>
+                <button class="carousel-nav carousel-next" type="button" aria-label="Show the next project">
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </button>
             </div>
         </div>
     </section>

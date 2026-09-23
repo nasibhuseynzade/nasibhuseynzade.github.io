@@ -447,16 +447,77 @@ section {
     border-radius: 2px;
 }
 
-.cert-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    justify-content: center;
-    gap: 2.5rem;
+/* Shared carousel: a fixed number of cards read in full, the neighbours on
+   either side trail off as shadows. Used by certifications and projects. */
+.carousel {
+    --carousel-gap: 2.5rem;
+    /* fraction of the leading card left visible, i.e. the width of the shadow
+       card behind the first readable one */
+    --carousel-lead: 0.35;
+    --carousel-mask: linear-gradient(to right, rgba(0, 0, 0, 0.12) 0, rgba(0, 0, 0, 0.35) 6%, #000 14%, #000 86%, rgba(0, 0, 0, 0.35) 94%, rgba(0, 0, 0, 0.12) 100%);
+    position: relative;
     max-width: 1400px;
     margin: 0 auto;
 }
 
+.carousel-track > * {
+    flex: 0 0 calc((100% - 3 * var(--carousel-gap)) / 2.7);
+}
+
+.carousel-viewport {
+    overflow: hidden;
+    /* room for the hover lift and its shadow, which the overflow would clip */
+    padding: 12px 0 30px;
+    -webkit-mask-image: var(--carousel-mask);
+    mask-image: var(--carousel-mask);
+}
+
+.carousel-track {
+    display: flex;
+    align-items: stretch;
+    gap: var(--carousel-gap);
+    transition: transform 0.5s ease;
+    will-change: transform;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    transform: translateY(-50%);
+    width: 3.5rem;
+    height: 3.5rem;
+    display: grid;
+    place-items: center;
+    border: 2px solid var(--primary-turquoise);
+    border-radius: 50%;
+    background: rgba(13, 13, 13, 0.85);
+    color: var(--primary-turquoise);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Pulled mostly clear of the cards; section padding (2rem) leaves just enough
+   room for this without clipping at the narrowest desktop width. */
+.carousel-prev {
+    left: -1.75rem;
+}
+
+.carousel-next {
+    right: -1.75rem;
+}
+
+.carousel-nav:hover,
+.carousel-nav:focus-visible {
+    background: var(--primary-turquoise);
+    color: var(--dark-gray);
+    box-shadow: 0 0 20px rgba(64, 224, 208, 0.5);
+}
+
 .cert-card {
+    display: flex;
+    flex-direction: column;
     background: var(--dark-gray);
     border: 2px solid var(--primary-turquoise);
     border-radius: 20px;
@@ -473,46 +534,72 @@ section {
 .cert-image {
     display: block;
     overflow: hidden;
+    aspect-ratio: 1400 / 738;
+    background: var(--dark-gray);
     border-bottom: 1px solid rgba(64, 224, 208, 0.2);
 }
 
+/* Certificates come in different aspect ratios; contain keeps every card the
+   same height without cropping the credential itself. */
 .cert-image img {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
     transition: transform 0.3s ease;
+}
+
+/* Matches the AWS certificate's own backdrop so the letterbox blends in. */
+.cert-image-aws {
+    background: #232f3e;
 }
 
 .cert-card:hover .cert-image img {
     transform: scale(1.05);
 }
 
+/* Titles wrap to different line counts, so the meta row is pinned to the
+   bottom and any slack falls above it instead of below the action. */
 .cert-content {
-    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.6rem 1.6rem 1.5rem;
 }
 
 .cert-name {
     font-family: 'Orbitron', monospace;
     font-size: 1.15rem;
     font-weight: 600;
-    line-height: 1.4;
-    margin-bottom: 0.9rem;
+    line-height: 1.35;
+    margin-bottom: 0.7rem;
     color: var(--primary-turquoise);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
+/* Issuer and date stack so the action can sit next to them: a single row of
+   all three needs ~440px and the card only offers ~345px. */
 .cert-sub {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.6rem 1.5rem;
+    margin-top: auto;
+    gap: 0.5rem 1rem;
+}
+
+.cert-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
 }
 
 .cert-sub .btn,
 .cert-sub .cert-status {
     flex-shrink: 0;
     margin-left: auto;
+    padding: 0.55rem 1.4rem;
+    font-size: 0.8rem;
 }
 
 .cert-issuer {
@@ -618,13 +705,9 @@ section {
     background: linear-gradient(90deg, transparent, var(--primary-turquoise), var(--accent-turquoise), var(--primary-turquoise), transparent);
 }
 
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2.5rem;
-}
-
 .project-card {
+    display: flex;
+    flex-direction: column;
     background: var(--dark-gray);
     border-radius: 20px;
     overflow: hidden;
@@ -668,22 +751,33 @@ section {
     transform: scale(1.05);
 }
 
+/* Cards stretch to the tallest in view, so the actions are pinned to a shared
+   baseline instead of floating wherever the description happens to end. */
 .project-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     padding: 2rem;
 }
 
+.project-content .btn {
+    margin-top: auto;
+}
+
+/* Titles and descriptions run to one or two lines depending on the project;
+   reserving two of each keeps the text block — and so the gap above the
+   action — identical on every card. */
 .project-content h3 {
     font-family: 'Orbitron', monospace;
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     font-weight: 600;
+    line-height: 1.4;
+    min-height: 2.8em;
     margin-bottom: 1rem;
     color: var(--primary-turquoise);
     text-transform: uppercase;
     letter-spacing: 1px;
-}
-
-.project-title-compact {
-    font-size: 1.25rem !important;
 }
 
 .project-content p {
@@ -691,6 +785,7 @@ section {
     color: var(--light-turquoise);
     margin-bottom: 1.5rem;
     line-height: 1.6;
+    min-height: 3.2em;
     font-size: 1.1rem;
 }
 
@@ -871,9 +966,6 @@ footer {
         font-size: 2.5rem;
     }
 
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
 
     .contact-details {
         padding: 2rem;
@@ -900,8 +992,43 @@ footer {
         height: 200px;
     }
 
-    .cert-grid {
-        grid-template-columns: 1fr;
+    .carousel {
+        --carousel-gap: 1.5rem;
+    }
+
+    /* one readable card per screen; 1 + 2 x 0.2 shadows fills the row, so the
+       lead fraction has to match that 1.4 divisor or the shadows go lopsided */
+    .carousel {
+        --carousel-lead: 0.2;
+    }
+
+    .carousel-track > * {
+        flex-basis: calc((100% - 2 * var(--carousel-gap)) / 1.4);
+    }
+
+    /* No room to sit clear of the cards at this width, so the controls drop
+       below the carousel rather than covering card text. */
+    .carousel {
+        padding-bottom: 4.75rem;
+    }
+
+    .carousel-nav {
+        top: auto;
+        bottom: 0;
+        transform: none;
+        width: 3rem;
+        height: 3rem;
+        font-size: 1rem;
+    }
+
+    .carousel-prev {
+        left: 50%;
+        margin-left: -3.75rem;
+    }
+
+    .carousel-next {
+        right: 50%;
+        margin-right: -3.75rem;
     }
 
     .certifications-title {
