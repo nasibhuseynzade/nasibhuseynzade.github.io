@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aviation Data Lakehouse</title>
+    <title>Frankfurt Aviation Data Pipeline — Nasib Huseynzade</title>
     <meta name="description" content="End-to-end aviation analytics project with a serverless medallion ETL architecture and interactive dashboard.">
     <meta name="author" content="Nasib Huseynzade">
-    <meta name="theme-color" content="#0A0A0A">
+    <meta name="theme-color" content="#050708">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Aviation Data Lakehouse - Nasib Huseynzade">
     <meta property="og:description" content="End-to-end aviation analytics project with a serverless medallion ETL architecture and interactive dashboard.">
@@ -17,92 +17,183 @@
     <meta name="twitter:description" content="End-to-end aviation analytics project with a serverless medallion ETL architecture and interactive dashboard.">
     <meta name="twitter:image" content="https://nasibhuseynzade.github.io/assets/Images/aviation.webp">
     <link rel="canonical" href="https://nasibhuseynzade.github.io/projects/aviation/">
-    <link rel="icon" type="image/png" href="../../assets/Images/letters2.png">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../assets/Images/nh-favicon.png" type="image/png">
+    <link rel="icon" href="../../assets/Images/nh-favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../../assets/Images/apple-touch-icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="style.css">
+    <script>document.documentElement.classList.add('js');</script>
 </head>
-<body>
-    <nav>
-        <div class="nav-container">
-            <a href="../../" class="logo">
-                <img src="../../assets/Images/heptagon2.png" class="logo-frame" alt="NH frame">
-                <img src="../../assets/Images/letters2.png" class="logo-core" alt="NH letters" width="1400" height="1396">
+<body class="page-case">
+    <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <symbol id="i-nh" viewBox="0 0 100 102.23"><path pathLength="1" d="M0 0 52.31 52.31 52.31 60.89 6.04 14.63 6.04 92.53 13.28 85.29 13.28 33.86 60.49 81.08 60.49 51.51 89.67 51.51 89.67 95.55 94.28 90.94 94.28 6.84 89.67 6.84 89.67 44.04 60.49 44.04 60.49 7.31 52.31 15.5 52.31 44.04 46.42 38.16 46.42 12.88 58.82 0.48 66.53 0.48 66.53 38 84.42 38 84.42 1.03 100 1.03 100 94.12 92.21 101.91 84.1 101.91 84.1 57.55 66.53 57.55 66.53 95.31 19.4 48.17 19.4 86.88 4.05 102.23 0 102.23Z"/></symbol>
+        <symbol id="i-hept" viewBox="0 0 100 100"><polygon vector-effect="non-scaling-stroke" points="50,4 85.96,21.32 94.85,60.24 69.96,91.44 30.04,91.44 5.15,60.24 14.04,21.32"/></symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.75" d="M4 12h15.5M13.5 6l6 6-6 6"/></symbol>
+        <symbol id="i-arrow-left" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.75" d="M20 12H4.5m6-6-6 6 6 6"/></symbol>
+        <symbol id="i-arrow-up" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.75" d="M12 20V4.5m-6 6 6-6 6 6"/></symbol>
+        <symbol id="i-external" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.75" d="M7 17 17 7M8.5 7H17v8.5"/></symbol>
+        <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+        <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
+        <symbol id="i-x" viewBox="0 0 24 24"><path fill="currentColor" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></symbol>
+    </svg>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+        <div class="container header-inner">
+            <a class="brand" href="../../">
+                <span class="brand-mark" aria-hidden="true">
+                    <svg class="brand-ring" viewBox="0 0 100 100"><use href="#i-hept"/></svg>
+                    <svg class="brand-nh" viewBox="0 0 100 102.23"><use href="#i-nh"/></svg>
+                </span>
+                <span class="brand-name"><span class="brand-first">Nasib</span> Huseynzade</span>
             </a>
-            <ul>
-                <li><a href="../../#home">Home</a></li>
-                <li><a href="../../#about">About</a></li>
-                <li><a href="../../#projects">Projects</a></li>
-                <li><a href="../../#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <div class="container">
-        <a href="../../#projects" class="back-button">← Back to Projects</a>
-        <h1 class="dashboard-title">✈️ Frankfurt (FRA) Aviation Data Pipeline</h1>
-        
-        <p class="subtitle">This serverless pipeline is updated automatically by GCP Cloud Scheduler every day.</p>
-        
-        <div class="dashboard-container">
-            <iframe
-                class="dashboard-iframe"
-                src="https://lookerstudio.google.com/embed/reporting/3817aa8e-bedc-4ecd-95a0-76f6206786e3/page/1oCuF?hl=en"
-                allowfullscreen
-                sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
-            </iframe>
-        </div>
-
-        <div class="project-description">
-            <h2 class="project-section-title">About This Project</h2>
-            <p class="project-text">
-                This application provides a dynamic and visually appealing analytics dashboard for Frankfurt Airport (FRA) 
-                outbound flights. Powered by a fully automated, serverless Medallion architecture, data is fetched hourly 
-                from the <a href="https://aviationstack.com" target="_blank" rel="noopener noreferrer" class="project-link">Aviationstack</a> API. 
-                Instead of processing raw data directly on the dashboard, a containerized PySpark job running on Google Cloud 
-                Run transforms the data through Bronze, Silver, and Gold layers. It applies advanced probability-based data 
-                augmentation for missing delays and stores the final structured data in Google BigQuery. This setup ensures 
-                data integrity, realistic visualizations, and highly optimized query performance.
-            </p>
-            <p class="project-text">
-                The source code for this project is available on GitHub at the following link: <a href="https://github.com/nasibhuseynzade/flight-data-pipeline" 
-                target="_blank" rel="noopener noreferrer" class="project-link">Aviation Pipeline</a>.
-            </p>
-        
-            <div class="project-details-grid">
-        
-                <div class="project-details-column">
-                    <h3 class="project-subtitle">Key Features</h3>
-                    <ul class="project-list project-list-spaced">
-                        <li><strong>Serverless Medallion Architecture:</strong> Data flows seamlessly through Bronze, Silver, 
-                            and Gold layers using Apache Spark (PySpark) inside a Docker container.</li>
-                        <li><strong>Fully Automated CI/CD:</strong> Every code push triggers a GitHub Actions workflow that 
-                            securely builds and deploys the updated container to Google Cloud Run.</li>
-                        <li><strong>Zero Idle Costs:</strong> Scheduled via GCP Cloud Scheduler to run hourly, meaning you 
-                            only pay for the exact compute seconds used during the ETL process.</li>
-                    </ul>
-        
-                    <h3 class="project-subtitle">Technologies Used</h3>
-                    <ul class="project-list">
-                        <li><strong>BI / Visualization:</strong> Looker Studio</li>
-                        <li><strong>Data Processing:</strong> Python, Apache Spark (PySpark), Pandas</li>
-                        <li><strong>Cloud:</strong> Google Cloud Platform (Cloud Run, Cloud Scheduler, BigQuery)</li>
-                        <li><strong>DevOps:</strong> Docker, GitHub Actions</li>
-                    
+            <nav class="site-nav" id="site-menu" aria-label="Main">
+                <ul class="nav-list">
+                    <li><a class="nav-link" href="../../#certifications">Certifications</a></li>
+                    <li><a class="nav-link" href="../../#research">Research</a></li>
+                    <li><a class="nav-link is-active" href="../../#projects">Projects</a></li>
+                    <li class="nav-item--contact"><a class="nav-link" href="../../#contact">Contact</a></li>
+                </ul>
+                <a class="btn btn--sm nav-cta" href="../../#contact">Contact<svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                <div class="nav-footer">
+                    <a class="nav-email" href="mailto:nasib.huseynzade@gmail.com">nasib.huseynzade@gmail.com</a>
+                    <ul class="socials">
+                        <li><a class="social-link" href="https://github.com/nasibhuseynzade" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a></li>
+                        <li><a class="social-link" href="https://linkedin.com/in/nasibhuseynzade" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+                        <li><a class="social-link" href="https://twitter.com/nasibhuseynzade" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></a></li>
                     </ul>
                 </div>
-        
-                <div class="project-figure">
-                    <img src="../../assets/Images/aviation_pipeline.webp" alt="Serverless Aviation Data Pipeline Architecture" class="project-figure-image">
-                    <p class="project-figure-caption">Figure: Serverless Aviation Pipeline 
-                        with PySpark & GCP CI/CD</p>
+            </nav>
+
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle>
+                <span class="sr-only" data-menu-label>Open menu</span>
+                <span class="menu-bar" aria-hidden="true"></span>
+                <span class="menu-bar" aria-hidden="true"></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="case-hero" id="top" style="--case-image: url('../../assets/Images/aviation.webp')">
+            <div class="container">
+                <a class="back-link label" href="../../#projects"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg>All projects</a>
+                <div class="case-meta">
+                    <span class="label">Data Engineering · Serverless</span>
+                    <span class="badge">Automated</span>
+                </div>
+                <h1 class="case-title">Frankfurt (FRA) Aviation Data Pipeline</h1>
+                <p class="case-lead">An analytics dashboard for Frankfurt Airport outbound flights, powered by a serverless medallion pipeline that GCP Cloud Scheduler updates automatically every day.</p>
+                <div class="case-actions">
+                    <a class="btn" href="https://github.com/nasibhuseynzade/flight-data-pipeline" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>Source code</a>
+                    <a class="btn btn--ghost" href="https://lookerstudio.google.com/reporting/3817aa8e-bedc-4ecd-95a0-76f6206786e3/page/1oCuF" target="_blank" rel="noopener noreferrer">Open in Looker Studio<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <footer>
-        <p>&copy; <span data-current-year>2025</span> Nasib Huseynzade. All rights reserved.</p>
+        <section class="case-embed" aria-label="Looker Studio dashboard">
+            <div class="container">
+                <div class="embed-frame frame">
+                    <div class="frame-inner">
+                        <div class="embed-bar">
+                            <span class="embed-title label"><span class="badge-dot" aria-hidden="true"></span>Looker Studio · updated daily</span>
+                            <span class="embed-host">lookerstudio.google.com</span>
+                        </div>
+                        <iframe
+                            class="embed-iframe"
+                            src="https://lookerstudio.google.com/embed/reporting/3817aa8e-bedc-4ecd-95a0-76f6206786e3/page/1oCuF?hl=en"
+                            title="Frankfurt Airport aviation dashboard on Looker Studio"
+                            loading="lazy"
+                            allowfullscreen
+                            sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-body">
+            <div class="container case-grid">
+                <div class="case-main">
+                    <h2 class="case-h2 label">About this project</h2>
+                    <div class="prose">
+                        <p>This application provides a dynamic and visually appealing analytics dashboard for Frankfurt Airport (FRA) outbound flights. Powered by a fully automated, serverless Medallion architecture, data is fetched hourly from the <a href="https://aviationstack.com" target="_blank" rel="noopener noreferrer">Aviationstack</a> API. Instead of processing raw data directly on the dashboard, a containerized PySpark job running on Google Cloud Run transforms the data through Bronze, Silver, and Gold layers. It applies advanced probability-based data augmentation for missing delays and stores the final structured data in Google BigQuery. This setup ensures data integrity, realistic visualizations, and highly optimized query performance.</p>
+                    </div>
+
+                    <h2 class="case-h2 label">Key features</h2>
+                    <ol class="feature-list">
+                        <li>
+                            <div>
+                                <h3>Serverless Medallion Architecture</h3>
+                                <p>Data flows seamlessly through Bronze, Silver, and Gold layers using Apache Spark (PySpark) inside a Docker container.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <h3>Fully Automated CI/CD</h3>
+                                <p>Every code push triggers a GitHub Actions workflow that securely builds and deploys the updated container to Google Cloud Run.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <h3>Zero Idle Costs</h3>
+                                <p>Scheduled via GCP Cloud Scheduler to run hourly, meaning you only pay for the exact compute seconds used during the ETL process.</p>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+
+                <aside class="case-aside" aria-labelledby="tech-title">
+                    <div class="frame">
+                        <div class="frame-inner">
+                            <h2 class="case-h2 label" id="tech-title">Technologies used</h2>
+                            <dl class="tech-list">
+                                <div><dt>BI / Visualization</dt><dd>Looker Studio</dd></div>
+                                <div><dt>Data Processing</dt><dd>Python, Apache Spark (PySpark), Pandas</dd></div>
+                                <div><dt>Cloud</dt><dd>Google Cloud Platform (Cloud Run, Cloud Scheduler, BigQuery)</dd></div>
+                                <div><dt>DevOps</dt><dd>Docker, GitHub Actions</dd></div>
+                            </dl>
+                            <a class="aside-link" href="https://github.com/nasibhuseynzade/flight-data-pipeline" target="_blank" rel="noopener noreferrer">Aviation Pipeline on GitHub<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section class="case-figure" aria-label="Architecture">
+            <div class="container">
+                <figure class="figure frame">
+                    <div class="frame-inner">
+                        <div class="figure-media">
+                            <img src="../../assets/Images/aviation_pipeline.webp" alt="Medallion pipeline on GCP: Cloud Scheduler triggers a Cloud Run PySpark job that moves Aviationstack data through bronze, silver and gold layers into BigQuery for Looker Studio, built and deployed with GitHub Actions and Cloud Build" width="1070" height="584" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption class="figure-caption"><span class="label">Figure</span>Serverless Aviation Pipeline with PySpark &amp; GCP CI/CD</figcaption>
+                    </div>
+                </figure>
+            </div>
+        </section>
+
+        <nav class="case-next" aria-label="Next project">
+            <div class="container">
+                <a class="next-link" href="../pl/">
+                    <span class="label">Next project</span>
+                    <span class="next-title">Football Statistics with Serverless ETL</span>
+                    <svg class="icon next-icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+                </a>
+            </div>
+        </nav>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <span class="footer-brand"><svg viewBox="0 0 100 102.23" aria-hidden="true"><use href="#i-nh"/></svg>&copy; <span data-current-year>2026</span> Nasib Huseynzade. All rights reserved.</span>
+            <a class="to-top" href="#top">Back to top<svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg></a>
+        </div>
     </footer>
 
     <script src="../../assets/js/site.js"></script>

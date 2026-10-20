@@ -1,21 +1,19 @@
-// Matches functionality
 function saveMatchesToLocalStorage(matches) {
-    localStorage.setItem('footballMatches_v2', JSON.stringify(matches)); // _v2 eklendi
+    localStorage.setItem('footballMatches_v2', JSON.stringify(matches));
 }
 
 function getMatchesFromLocalStorage() {
-    return JSON.parse(localStorage.getItem('footballMatches_v2')); // _v2 eklendi
+    return JSON.parse(localStorage.getItem('footballMatches_v2'));
 }
 
 function saveSelectedMatchday(matchday) {
-    localStorage.setItem('selectedMatchday_v2', matchday); // _v2 eklendi
+    localStorage.setItem('selectedMatchday_v2', matchday);
 }
 
 function getSelectedMatchday() {
-    return localStorage.getItem('selectedMatchday_v2') || '1'; // _v2 eklendi
+    return localStorage.getItem('selectedMatchday_v2') || '1';
 }
 
-// Standings functionality
 function setLoading(isLoading) {
     const loader = document.getElementById('loader');
     const button = document.getElementById('fetchStandings');
@@ -25,18 +23,18 @@ function setLoading(isLoading) {
 
 function updateTimestamp() {
     const now = new Date();
-    document.getElementById('lastUpdated').textContent = 
+    document.getElementById('lastUpdated').textContent =
         `Last updated: ${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
 }
 
 function parseCSV(csvString) {
     const lines = csvString.trim().split('\n');
     const headers = lines[0].split(',').map(h => h.trim());
-    
+
     return lines.slice(1).map(line => {
         const values = line.match(/(".*?"|[^,]+)(?=\s*,|\s*$)/g)
             .map(val => val.replace(/^"(.*)"$/, '$1').trim());
-        
+
         return headers.reduce((obj, header, index) => {
             obj[header] = values[index];
             return obj;
@@ -48,11 +46,7 @@ function displayStandings(data) {
     const tbody = document.getElementById('standingsBody');
     tbody.innerHTML = '';
 
-    let rows = typeof data === 'string' ? 
-        parseCSV(data) : 
-        data;
-
-    rows.forEach((row) => {
+    parseCSV(data).forEach((row) => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
             <td>${row.team_name}</td>
@@ -71,8 +65,7 @@ function displayStandings(data) {
 function populateMatchesData(data) {
     const matchdaySelect = document.getElementById('matchday');
     const matchesList = document.getElementById('matches');
-    
-    // Clear existing options
+
     matchdaySelect.innerHTML = '';
 
     const sortedMatchdays = Object.keys(data).sort((a, b) => parseInt(a) - parseInt(b));
@@ -83,14 +76,12 @@ function populateMatchesData(data) {
         matchdaySelect.appendChild(option);
     });
 
-
     let selectedMatchday = getSelectedMatchday();
     if (!data[selectedMatchday]) {
         selectedMatchday = sortedMatchdays[0];
     }
     matchdaySelect.value = selectedMatchday;
 
-    // Update matches display
     function updateMatchesDisplay() {
         const currentMatchday = matchdaySelect.value;
         const matches = data[currentMatchday];
@@ -109,37 +100,27 @@ function populateMatchesData(data) {
             matchesList.innerHTML = '<li>No matches found for this matchday.</li>';
         }
 
-        // Save selected matchday to local storage
         saveSelectedMatchday(currentMatchday);
     }
 
-    // Add change event listener
-    matchdaySelect.addEventListener('change', updateMatchesDisplay);
+    matchdaySelect.onchange = updateMatchesDisplay;
 
-    // Initial display
     updateMatchesDisplay();
 }
 
-// Event listeners
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // Sayfa açılır açılmaz Standings verisini S3'ten çek
     document.getElementById('fetchStandings').click();
-    
-    // Fetch matches from Local Storage first for instant loading
+
     const cachedMatches = getMatchesFromLocalStorage();
     if (cachedMatches) {
         populateMatchesData(cachedMatches);
     }
 
-    // Then fetch fresh matches from S3 in the background
     const matchesUrl = 'https://new-pl.s3.us-east-1.amazonaws.com/matches.json';
-    
 
     fetch(`${matchesUrl}?t=${new Date().getTime()}`)
             .then(response => response.json())
             .then(data => {
-                
                 if (data && Object.keys(data).length > 0) {
                     saveMatchesToLocalStorage(data);
                     populateMatchesData(data);
@@ -153,13 +134,13 @@ document.addEventListener('DOMContentLoaded', () => {
 document.getElementById('fetchStandings').addEventListener('click', async () => {
     setLoading(true);
     try {
-        const s3Url = 'https://new-pl.s3.us-east-1.amazonaws.com/league_standings.csv'; 
-        
+        const s3Url = 'https://new-pl.s3.us-east-1.amazonaws.com/league_standings.csv';
+
         const response = await fetch(`${s3Url}?t=${new Date().getTime()}`);
-        
+
         if (response.ok) {
-            const csvData = await response.text(); 
-            
+            const csvData = await response.text();
+
             updateTimestamp();
             displayStandings(csvData);
         } else {

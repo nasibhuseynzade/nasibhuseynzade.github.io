@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-2.62 -1.5 105.23 105.23">
+  <!-- Just the NH monogram, filling the icon. Bright turquoise for dark tab
+       bars, a deeper turquoise where the browser shows light tabs. -->
+  <style>
+    path { fill: #00e4d0; }
+    @media (prefers-color-scheme: light) {
+      path { fill: #00a596; }
+    }
+  </style>
+  <path d="M0 0 52.31 52.31 52.31 60.89 6.04 14.63 6.04 92.53 13.28 85.29 13.28 33.86 60.49 81.08 60.49 51.51 89.67 51.51 89.67 95.55 94.28 90.94 94.28 6.84 89.67 6.84 89.67 44.04 60.49 44.04 60.49 7.31 52.31 15.5 52.31 44.04 46.42 38.16 46.42 12.88 58.82 0.48 66.53 0.48 66.53 38 84.42 38 84.42 1.03 100 1.03 100 94.12 92.21 101.91 84.1 101.91 84.1 57.55 66.53 57.55 66.53 95.31 19.4 48.17 19.4 86.88 4.05 102.23 0 102.23Z"/>
+</svg>

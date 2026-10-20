@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page not found — Nasib Huseynzade</title>
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#050708">
+    <link rel="icon" href="/assets/Images/nh-favicon.png" type="image/png">
+    <link rel="icon" href="/assets/Images/nh-favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #050708;
+            --surface-2: #10191c;
+            --line: rgba(190, 255, 248, 0.08);
+            --line-3: rgba(190, 255, 248, 0.26);
+            --text: #e8f1f0;
+            --text-2: #a3b5b3;
+            --brand: #00e4d0;
+            --brand-hi: #74f6ea;
+            --brand-ink: #00201d;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        body {
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            min-height: 100svh;
+            padding: 3rem 1rem;
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Archivo", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            text-align: center;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background:
+                radial-gradient(circle at 50% 38%, rgba(0, 228, 208, 0.12), transparent 45%),
+                linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 64px 64px,
+                linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / 64px 64px;
+            -webkit-mask-image: radial-gradient(circle at 50% 40%, #000 20%, transparent 70%);
+            mask-image: radial-gradient(circle at 50% 40%, #000 20%, transparent 70%);
+        }
+
+        .mark {
+            position: relative;
+            width: 168px;
+            height: 168px;
+            margin: 0 auto;
+            color: var(--brand);
+        }
+
+        .mark svg {
+            position: absolute;
+            overflow: visible;
+        }
+
+        .ring,
+        .ring-inner {
+            fill: none;
+            stroke: currentColor;
+            vector-effect: non-scaling-stroke;
+        }
+
+        .ring {
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            stroke-width: 1.5;
+            animation: spin 24s linear infinite;
+        }
+
+        .ring-inner {
+            inset: 22%;
+            width: 56%;
+            height: 56%;
+            stroke: rgba(0, 228, 208, 0.35);
+            stroke-dasharray: 3 5;
+            animation: spin 18s linear infinite reverse;
+        }
+
+        .nh {
+            top: 50%;
+            left: 50%;
+            width: 46%;
+            height: 47%;
+            fill: var(--brand);
+            stroke: var(--brand);
+            stroke-width: 1.2;
+            stroke-dasharray: 1;
+            transform: translate(-50%, -50%);
+            animation: draw 2.4s cubic-bezier(0.65, 0, 0.35, 1) 0.2s both;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes draw {
+            0% { stroke-dashoffset: 1; stroke-opacity: 1; fill-opacity: 0; }
+            60% { stroke-dashoffset: 0; stroke-opacity: 1; fill-opacity: 0; }
+            100% { stroke-dashoffset: 0; stroke-opacity: 0; fill-opacity: 1; }
+        }
+
+        .code {
+            margin-top: 2.75rem;
+            color: var(--brand);
+            font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            letter-spacing: 0.4em;
+        }
+
+        h1 {
+            margin-top: 0.75rem;
+            font-size: clamp(2.25rem, 1.4rem + 3.4vw, 3.75rem);
+            font-weight: 800;
+            font-stretch: 114%;
+            line-height: 1;
+            letter-spacing: -0.035em;
+        }
+
+        .text {
+            max-width: 28rem;
+            margin: 1.25rem auto 0;
+            color: var(--text-2);
+            font-size: 1.0625rem;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 2.25rem;
+        }
+
+        .btn {
+            --c: 10px;
+            position: relative;
+            isolation: isolate;
+            display: inline-flex;
+            align-items: center;
+            min-height: 3rem;
+            padding: 0.85rem 1.4rem;
+            background: var(--brand);
+            color: var(--brand-ink);
+            font-size: 0.9375rem;
+            font-weight: 600;
+            font-stretch: 106%;
+            line-height: 1;
+            text-decoration: none;
+            clip-path: polygon(var(--c) 0, 100% 0, 100% calc(100% - var(--c)), calc(100% - var(--c)) 100%, 0 100%, 0 var(--c));
+            transition: background-color 0.25s ease;
+        }
+
+        .btn:hover {
+            background: var(--brand-hi);
+        }
+
+        .btn:focus-visible {
+            outline: none;
+            background: var(--text);
+            color: var(--bg);
+        }
+
+        .btn--ghost {
+            background: var(--line-3);
+            color: var(--text);
+        }
+
+        .btn--ghost::before {
+            --ci: calc(var(--c) - 0.586px);
+            content: "";
+            position: absolute;
+            inset: 1px;
+            z-index: -1;
+            background: var(--bg);
+            clip-path: polygon(var(--ci) 0, 100% 0, 100% calc(100% - var(--ci)), calc(100% - var(--ci)) 100%, 0 100%, 0 var(--ci));
+        }
+
+        .btn--ghost:hover,
+        .btn--ghost:focus-visible {
+            background: var(--brand);
+            color: var(--text);
+        }
+
+        .btn--ghost:hover::before,
+        .btn--ghost:focus-visible::before {
+            background: var(--surface-2);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ring,
+            .ring-inner {
+                animation: none;
+            }
+
+            .nh {
+                animation-duration: 0.01ms;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="mark" aria-hidden="true">
+            <svg class="ring" viewBox="0 0 100 100"><polygon points="50,4 85.96,21.32 94.85,60.24 69.96,91.44 30.04,91.44 5.15,60.24 14.04,21.32"/></svg>
+            <svg class="ring-inner" viewBox="0 0 100 100"><polygon points="50,4 85.96,21.32 94.85,60.24 69.96,91.44 30.04,91.44 5.15,60.24 14.04,21.32"/></svg>
+            <svg class="nh" viewBox="0 0 100 102.23"><path pathLength="1" d="M0 0 52.31 52.31 52.31 60.89 6.04 14.63 6.04 92.53 13.28 85.29 13.28 33.86 60.49 81.08 60.49 51.51 89.67 51.51 89.67 95.55 94.28 90.94 94.28 6.84 89.67 6.84 89.67 44.04 60.49 44.04 60.49 7.31 52.31 15.5 52.31 44.04 46.42 38.16 46.42 12.88 58.82 0.48 66.53 0.48 66.53 38 84.42 38 84.42 1.03 100 1.03 100 94.12 92.21 101.91 84.1 101.91 84.1 57.55 66.53 57.55 66.53 95.31 19.4 48.17 19.4 86.88 4.05 102.23 0 102.23Z"/></svg>
+        </div>
+
+        <p class="code">404</p>
+        <h1>Page not found</h1>
+        <p class="text">This path isn't part of the pipeline. The link may be broken, or the page has moved.</p>
+
+        <div class="actions">
+            <a class="btn" href="/" data-local="index.html">Back to home</a>
+            <a class="btn btn--ghost" href="/#projects" data-local="index.html#projects">View projects</a>
+        </div>
+    </main>
+
+    <script>
+
+        if (window.location.protocol === 'file:') {
+            document.querySelectorAll('[data-local]').forEach(function (link) {
+                link.setAttribute('href', link.getAttribute('data-local'));
+            });
+        }
+    </script>
+</body>
+</html>
