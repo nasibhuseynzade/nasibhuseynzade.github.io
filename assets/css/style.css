@@ -1169,6 +1169,27 @@ h3 {
     filter: saturate(1.05);
 }
 
+.project-flag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.project--archived .project-card {
+    filter: grayscale(1);
+    opacity: 0.7;
+    transition: filter 0.5s ease, opacity 0.5s ease;
+}
+
+.project--archived:hover .project-card,
+.project--archived:focus-within .project-card {
+    filter: none;
+    opacity: 1;
+}
+
 .project-body {
     flex: 1;
     display: flex;
@@ -1325,6 +1346,7 @@ h3 {
 
 .cert-card {
     flex: 1;
+    container-type: inline-size;
 }
 
 .cert-card .frame-inner {
@@ -1378,6 +1400,54 @@ a.cert-media:focus-visible {
     stroke-width: 1.2;
     stroke-dasharray: 4 4;
     animation: spin 24s linear infinite;
+}
+
+.cert-domains {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    aspect-ratio: 16 / 10;
+    padding: 1rem 1.5rem;
+    background:
+        radial-gradient(120% 100% at 0 0, var(--brand-a08), transparent 60%),
+        var(--surface);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.cert-card:hover .cert-domains {
+    opacity: 1;
+}
+
+@container (max-width: 339.98px) {
+    .cert-domains {
+        bottom: 0;
+        aspect-ratio: auto;
+    }
+}
+
+.cert-domains dl > div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 0.4rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.8125rem;
+    line-height: 1.35;
+}
+
+.cert-domains dd {
+    flex: none;
+    color: var(--brand);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
 }
 
 .cert-body {
